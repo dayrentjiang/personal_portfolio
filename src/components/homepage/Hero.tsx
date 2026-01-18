@@ -42,7 +42,7 @@ export default function Hero() {
             alt="Portrait"
             width={500}
             height={600}
-            className="object-cover w-[280px] sm:w-[350px] md:w-[450px] lg:w-[500px] h-auto"
+            className="object-cover w-[210px] sm:w-[250px] md:w-[300px] lg:w-[400px] h-auto"
             priority
           />
         </div>

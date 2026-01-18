@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 
 const services = [
   {
@@ -23,13 +26,36 @@ const services = [
 ];
 
 export default function Services() {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!sectionRef.current) return;
+
+      const rect = sectionRef.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+
+      // Calculate how far we've scrolled into this section
+      if (rect.top < windowHeight && rect.bottom > 0) {
+        const progress = (windowHeight - rect.top) / (windowHeight + rect.height);
+        setScrollY(progress * 100);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Initial call
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <section className="min-h-screen bg-[#0a0a0a] px-8 py-24">
+    <section ref={sectionRef} className="min-h-screen bg-[#0a0a0a] px-4 md:px-8 py-24 overflow-hidden">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="flex justify-between items-start mb-12">
+        <div className="flex flex-col md:flex-row justify-between items-start gap-4 mb-12">
           <p className="text-[#4ade80] text-sm">// Service</p>
-          <h2 className="text-3xl md:text-4xl font-bold text-right max-w-lg leading-tight">
+          <h2 className="text-3xl md:text-4xl font-bold md:text-right max-w-lg leading-tight">
             End-to-End Web Development Services
           </h2>
         </div>
@@ -42,19 +68,33 @@ export default function Services() {
         </div>
 
         {/* Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Left - Image */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Left - Image with Parallax */}
           <div className="relative aspect-[4/3] rounded-lg overflow-hidden bg-[#1a1a1a]">
-            <Image
-              src="/services.png"
-              alt="Web Development"
-              fill
-              className="object-cover"
-            />
+            <div
+              className="absolute inset-0 scale-125"
+              style={{
+                transform: `translateY(${scrollY * 0.3 - 15}px) scale(1.25)`,
+                transition: "transform 0.1s ease-out",
+              }}
+            >
+              <Image
+                src="/services.png"
+                alt="Web Development"
+                fill
+                className="object-cover"
+              />
+            </div>
           </div>
 
           {/* Right - Services List */}
-          <div className="space-y-0">
+          <div
+            className="space-y-0"
+            style={{
+              transform: `translateY(${scrollY * -0.15 + 10}px)`,
+              transition: "transform 0.1s ease-out",
+            }}
+          >
             {services.map((service, index) => (
               <div
                 key={index}

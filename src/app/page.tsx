@@ -1,10 +1,10 @@
-import Hero from "@/components/Hero";
-import Gallery from "@/components/Gallery";
-import Skills from "@/components/Skills";
-import Projects from "@/components/Projects";
-import Services from "@/components/Services";
-import Process from "@/components/Process";
-import Clients from "@/components/Clients";
+import Hero from "@/components/homepage/Hero";
+import Gallery from "@/components/homepage/Gallery";
+import Skills from "@/components/homepage/Skills";
+import Projects from "@/components/homepage/Projects";
+import Services from "@/components/homepage/Services";
+import Process from "@/components/homepage/Process";
+import Clients from "@/components/homepage/Clients";
 import Footer from "@/components/shared/Footer";
 
 export default function Home() {
@@ -17,7 +17,6 @@ export default function Home() {
       <Services />
       <Process />
       <Clients />
-      <Footer />
     </main>
   );
 }
