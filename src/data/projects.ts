@@ -11,63 +11,116 @@ export interface Project {
     techStack: string[];
     liveUrl?: string;
     githubUrl?: string;
+    videoUrl?: string;
     images: string[];
   };
 }
 
 export const projects: Project[] = [
   {
-    slug: "techzo",
-    title: "Techzo",
+    slug: "deepway",
+    title: "Deepway",
     description:
-      "Techzo is a cutting-edge design agency template built to showcase innovation, digital expertise, and a bold creative presence online",
-    image: "/projects/techzo.png",
-    tags: ["HTML5 & CSS", "Framer Motion", "Vite"],
+      "Website for an Australian electric truck manufacturer. Clean, modern design showcasing their vehicles and vision for sustainable transport.",
+    image: "/deepway.jpeg",
+    tags: ["Next.js", "Sanity CMS", "TypeScript"],
     details: {
       overview:
-        "Techzo is a modern, responsive design agency template that combines sleek aesthetics with powerful functionality. Built for creative agencies looking to make a bold statement online.",
+        "Built the marketing website for Deepway, an Australian company manufacturing electric heavy-duty trucks for commercial logistics.",
       features: [
-        "Fully responsive design",
-        "Smooth scroll animations",
-        "Interactive UI components",
-        "SEO optimized",
-        "Fast loading performance",
+        "Responsive design across all devices",
+        "Product showcase sections",
+        "Content managed with Sanity CMS",
+        "Performance optimized",
       ],
-      techStack: ["HTML5", "CSS3", "JavaScript", "Framer Motion", "Vite"],
-      liveUrl: "https://techzo.example.com",
-      githubUrl: "https://github.com/yourusername/techzo",
-      images: [
-        "/projects/techzo-1.png",
-        "/projects/techzo-2.png",
-        "/projects/techzo-3.png",
-      ],
+      techStack: ["Next.js", "Sanity CMS", "Tailwind CSS", "TypeScript"],
+      liveUrl: "https://deepway.com.au",
+      images: ["/projects/deepway.png"],
     },
   },
   {
-    slug: "lumin-studio",
-    title: "Lumin Studio",
+    slug: "enroute",
+    title: "Enroute",
     description:
-      "LuminStudio blends elegance and clarity — a modern design agency template crafted to highlight creative work and impress potential clients",
-    image: "/projects/lumin.png",
-    tags: ["HTML5 & Tailwind CSS", "React", "Vite"],
+      "Full system for a platform connecting automotive workshops, logistics, drivers, and mechanics. Built with a team, end to end.",
+    image: "/enroute.jpeg",
+    tags: ["Vue.js", "PHP", "Docker", "GCP"],
     details: {
       overview:
-        "Lumin Studio is an elegant portfolio template designed for creative professionals. It features a clean, minimalist design that puts your work front and center.",
+        "Built the entire Enroute platform with a team, from workshop management to logistics coordination, driver apps, and worker tools. A complete system connecting all parts of automotive operations.",
       features: [
-        "Dark/Light mode toggle",
-        "Project showcase gallery",
-        "Contact form integration",
-        "Blog section",
-        "Client testimonials",
+        "Workshop management platform",
+        "Logistics and fleet coordination",
+        "Driver mobile app",
+        "Worker task tracking app",
+        "Real-time updates across all apps",
       ],
-      techStack: ["React", "Tailwind CSS", "Vite", "TypeScript"],
-      liveUrl: "https://lumin.example.com",
-      githubUrl: "https://github.com/yourusername/lumin-studio",
-      images: [
-        "/projects/lumin-1.png",
-        "/projects/lumin-2.png",
-        "/projects/lumin-3.png",
+      techStack: ["Vue.js", "PHP", "Docker", "Google Cloud Platform", "MySQL"],
+      liveUrl: "https://enroute-tech.com",
+      images: ["/projects/enroute.png"],
+    },
+  },
+  {
+    slug: "asg",
+    title: "ASG Automotive",
+    description:
+      "Website for Australia's leading Sitrak truck dealership. Showcases their vehicle range, services, and financing options.",
+    image: "/asg.png",
+    tags: ["Next.js", "Tailwind CSS", "TypeScript"],
+    details: {
+      overview:
+        "Built the website for ASG Automotive, a Melbourne-based commercial vehicle dealership specializing in Sitrak trucks.",
+      features: [
+        "Vehicle catalog and showcase",
+        "Service and parts information",
+        "Financing calculator",
+        "Responsive design",
       ],
+      techStack: ["Next.js", "Tailwind CSS", "TypeScript"],
+      liveUrl: "https://asgau.com.au",
+      images: ["/projects/asg.png"],
+    },
+  },
+  {
+    slug: "keepitreelcam",
+    title: "KeepIt Reel",
+    description:
+      "Instant replay device system that lets athletes capture their best moments in 1080p HD.",
+    image: "/keepitreel.png",
+    tags: ["Next.js", "Tailwind CSS", "TypeScript"],
+    details: {
+      overview:
+        "Built KeepIt Reel, a sports tech product that captures the last 45 seconds of gameplay with one button press.",
+      features: [
+        "Product showcase",
+        "How it works section",
+        "Clean, modern design",
+        "Responsive layout",
+      ],
+      techStack: ["Next.js", "Tailwind CSS", "TypeScript"],
+      liveUrl: "https://www.keepitreelcam.com",
+      images: ["/projects/keepitreelcam.png"],
+    },
+  },
+  {
+    slug: "smart-trashcan",
+    title: "Smart Trashcan",
+    description:
+      "A trashcan that automatically sorts your waste when you throw it in. Built with Arduino, Raspberry Pi, and sensors for a uni project.",
+    image: "/smarttrash.png",
+    tags: ["Arduino", "Raspberry Pi", "Hardware"],
+    details: {
+      overview:
+        "Built a smart trashcan that detects and sorts waste automatically. Throw something in and it figures out where it should go.",
+      features: [
+        "Automatic waste detection",
+        "Real-time sorting mechanism",
+        "Sensor integration",
+        "Embedded systems programming",
+      ],
+      techStack: ["Arduino", "Raspberry Pi", "Sensors", "C++"],
+      videoUrl: "https://youtu.be/F4YQMTxKXPc",
+      images: [],
     },
   },
 ];

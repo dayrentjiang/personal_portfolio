@@ -16,7 +16,7 @@ export default function Home() {
       <Projects />
       <Services />
       <Process />
-      <Clients />
+      {/* <Clients /> */}
     </main>
   );
 }

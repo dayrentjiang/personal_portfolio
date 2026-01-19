@@ -10,7 +10,7 @@ export default function ProjectsPage() {
         <div className="flex justify-between items-start mb-12">
           <p className="text-[#4ade80] text-sm">// All Projects</p>
           <h1 className="text-4xl md:text-5xl font-bold text-right max-w-md leading-tight">
-            My Complete Project Collection
+            Things I&apos;ve Built
           </h1>
         </div>
 
@@ -30,12 +30,18 @@ export default function ProjectsPage() {
               className="group block"
             >
               <div className="relative aspect-[7/4] mb-6 overflow-hidden rounded-lg bg-[#1a1a1a]">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                />
+                {project.image ? (
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center text-white/30">
+                    <span className="text-4xl">&#9654;</span>
+                  </div>
+                )}
               </div>
 
               <h3 className="text-xl font-semibold mb-3 group-hover:text-[#4ade80] transition-colors">
@@ -58,6 +64,12 @@ export default function ProjectsPage() {
             </Link>
           ))}
         </div>
+
+        {/* Note */}
+        <p className="text-white/40 text-sm mt-16 text-center">
+          Also worked on internal systems and software that aren&apos;t shown
+          here. Happy to share more upon request.
+        </p>
       </div>
     </main>
   );

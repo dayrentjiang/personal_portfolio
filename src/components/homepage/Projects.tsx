@@ -8,9 +8,9 @@ export default function Projects() {
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="flex justify-between items-start mb-12">
-          <p className="text-[#4ade80] text-sm">// Explore Work</p>
+          <p className="text-[#4ade80] text-sm">// Projects</p>
           <h2 className="text-4xl md:text-5xl font-bold text-right max-w-md leading-tight">
-            A Showcase of My Latest Projects
+            Things I&apos;ve Built
           </h2>
         </div>
 
@@ -31,12 +31,18 @@ export default function Projects() {
             >
               {/* Project Image */}
               <div className="relative aspect-[7/4] mb-6 overflow-hidden rounded-lg bg-[#1a1a1a]">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                />
+                {project.image ? (
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center text-white/30">
+                    <span className="text-4xl">&#9654;</span>
+                  </div>
+                )}
               </div>
 
               {/* Project Info */}
@@ -63,13 +69,16 @@ export default function Projects() {
         </div>
 
         {/* View More Button */}
-        <div className="flex justify-center mt-16">
+        <div className="flex flex-col items-center mt-16 gap-4">
           <Link
             href="/projects"
             className="bg-[#4ade80] text-black font-medium px-8 py-3 rounded-full hover:bg-[#3fcf70] transition-colors"
           >
             View More Projects
           </Link>
+          <p className="text-white/40 text-sm">
+            + internal systems not shown here
+          </p>
         </div>
       </div>
     </section>

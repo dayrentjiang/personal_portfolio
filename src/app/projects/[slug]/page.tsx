@@ -49,14 +49,71 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         </div>
 
         {/* Main Image */}
-        <div className="relative aspect-video mb-12 rounded-lg overflow-hidden bg-[#1a1a1a]">
-          <Image
-            src={project.image}
-            alt={project.title}
-            fill
-            className="object-cover"
-          />
-        </div>
+        {project.image && (
+          <div className="relative aspect-video mb-12 rounded-lg overflow-hidden bg-[#1a1a1a]">
+            <Image
+              src={project.image}
+              alt={project.title}
+              fill
+              className="object-cover"
+            />
+          </div>
+        )}
+
+        {/* Links Table (for projects with video/external links but no image) */}
+        {!project.image && (project.details.videoUrl || project.details.liveUrl || project.details.githubUrl) && (
+          <div className="mb-12 border border-white/10 rounded-lg overflow-hidden">
+            <table className="w-full">
+              <tbody>
+                {project.details.videoUrl && (
+                  <tr className="border-b border-white/10">
+                    <td className="px-6 py-4 text-white/50 w-32">Demo</td>
+                    <td className="px-6 py-4">
+                      <a
+                        href={project.details.videoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[#4ade80] hover:underline"
+                      >
+                        Watch on YouTube &rarr;
+                      </a>
+                    </td>
+                  </tr>
+                )}
+                {project.details.liveUrl && (
+                  <tr className="border-b border-white/10">
+                    <td className="px-6 py-4 text-white/50 w-32">Live</td>
+                    <td className="px-6 py-4">
+                      <a
+                        href={project.details.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[#4ade80] hover:underline"
+                      >
+                        {project.details.liveUrl} &rarr;
+                      </a>
+                    </td>
+                  </tr>
+                )}
+                {project.details.githubUrl && (
+                  <tr>
+                    <td className="px-6 py-4 text-white/50 w-32">Source</td>
+                    <td className="px-6 py-4">
+                      <a
+                        href={project.details.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[#4ade80] hover:underline"
+                      >
+                        View on GitHub &rarr;
+                      </a>
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
+        )}
 
         {/* Overview */}
         <section className="mb-12">

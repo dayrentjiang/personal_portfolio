@@ -5,23 +5,29 @@ import { useEffect, useRef, useState } from "react";
 
 const services = [
   {
-    title: "Custom Web Development",
+    title: "Web Applications",
     number: "01",
     description:
-      "Build complete web applications from scratch — frontend to backend — optimized for speed, security, and scalability.",
+      "I build full web apps from start to finish — frontend, backend, the whole thing.",
     hasLink: true,
   },
   {
-    title: "Frontend Engineering",
+    title: "Websites",
     number: "02",
+    description:
+      "Marketing sites, landing pages, portfolios — clean and fast.",
   },
   {
-    title: "Server logic & API Development",
+    title: "Mobile Apps",
     number: "03",
+    description:
+      "Cross-platform mobile apps using React Native.",
   },
   {
-    title: "Full Stack Application Development",
+    title: "Consulting",
     number: "04",
+    description:
+      "Technical advice, code reviews, or help figuring out how to build something.",
   },
 ];
 
@@ -56,7 +62,7 @@ export default function Services() {
         <div className="flex flex-col md:flex-row justify-between items-start gap-4 mb-12">
           <p className="text-[#4ade80] text-sm">// Service</p>
           <h2 className="text-3xl md:text-4xl font-bold md:text-right max-w-lg leading-tight">
-            End-to-End Web Development Services
+            What I Can Help You With
           </h2>
         </div>
 

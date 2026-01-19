@@ -4,9 +4,9 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
 const photos = [
-  { src: "/dayrent.png", alt: "Photo 1", rotate: "-6deg" },
-  { src: "/dayrent.png", alt: "Photo 2", rotate: "3deg" },
-  { src: "/dayrent.png", alt: "Photo 3", rotate: "-4deg" },
+  { src: "/IMG_2749.jpg", alt: "Photo 1", rotate: "-6deg" },
+  { src: "/IMG_2749.jpg", alt: "Photo 2", rotate: "3deg" },
+  { src: "/IMG_2749.jpg", alt: "Photo 3", rotate: "-4deg" },
 ];
 
 export default function Gallery() {
@@ -29,7 +29,7 @@ export default function Gallery() {
           Math.abs(sectionTop) / (sectionHeight - viewportHeight);
         const newIndex = Math.min(
           Math.floor(scrollProgress * photos.length),
-          photos.length - 1
+          photos.length - 1,
         );
         setActiveIndex(newIndex);
       }

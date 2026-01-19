@@ -109,20 +109,18 @@ export default function AboutHero() {
           }}
         >
           <p className="text-lg md:text-xl font-medium leading-relaxed mb-6">
-            <span className="text-[#4ade80]">&lt;p&gt;</span> I CRAFT FAST,
-            SCALABLE, AND{" "}
-            <span className="text-[#4ade80]">USER-FRIENDLY WEB</span>{" "}
-            APPLICATIONS WITH MODERN JAVASCRIPT FRAMEWORKS — COMBINING REACT ON
-            THE FRONTEND WITH ROBUST{" "}
-            <span className="text-[#4ade80]">SERVER-SIDE SOLUTIONS</span> USING
-            NODE.JS. <span className="text-[#4ade80]">&lt;/p&gt;</span>
+            <span className="text-[#4ade80]">&lt;p&gt;</span> I BUILD{" "}
+            <span className="text-[#4ade80]">WEB APPS</span>, WEBSITES, AND
+            MOBILE APPS. LETS TALK AND DISCUSS YOUR NEEDS, I&apos;M COMFORTABLE
+            PICKING UP WHATEVER THE PROJECT REQUIRE.{" "}
+            <span className="text-[#4ade80]">&lt;/p&gt;</span>
           </p>
 
           <p className="text-white/60 text-sm leading-relaxed mb-8 max-w-xl mx-auto">
-            I thrive on solving real-world problems, turning ideas into clean,
-            maintainable code, and learning through experimentation. You&apos;ll
-            find me building side projects, diving into new tech stacks, or
-            simply exploring web development.
+            I like turning ideas into real things. I care a lot about clean code
+            and making stuff that actually feels good to use. When I&apos;m not
+            working, I&apos;m usually tinkering with side projects or trying out
+            something new.
           </p>
 
           <a

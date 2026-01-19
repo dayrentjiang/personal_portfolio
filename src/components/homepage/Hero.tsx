@@ -8,7 +8,7 @@ export default function Hero() {
         {/* Hero Text Section */}
         <div className="max-w-2xl z-20">
           <p className="text-base md:text-lg mb-2 md:mb-4">
-            Hey, I&apos;m a Full Stack Developer
+            Hey, I build things
           </p>
 
           {/* Large Name with Outline Effect */}
@@ -26,8 +26,8 @@ export default function Hero() {
 
           {/* Mobile Description - shown only on mobile */}
           <p className="md:hidden text-sm leading-relaxed text-white/80 mt-6 max-w-sm">
-            I craft fast, scalable, and user-friendly web applications with
-            modern JavaScript frameworks.
+            I&apos;m a full stack developer. I care about writing clean code and
+            making things that feel good to use.
           </p>
         </div>
 
@@ -63,33 +63,32 @@ export default function Hero() {
           </div>
 
           <p className="text-sm leading-relaxed text-white/80 mt-8">
-            I craft fast, scalable, and user-friendly web applications with
-            modern JavaScript frameworks — combining React on the frontend with
-            robust server-side solutions using Node.js.
+            I&apos;m a full stack developer. I care about clean code and good
+            user experience. I work end to end, from idea to shipped product.
           </p>
         </div>
       </div>
 
       {/* Bottom Left - Contact Info */}
-      <div className="absolute bottom-4 md:bottom-8 left-4 md:left-8 text-xs md:text-sm space-y-1">
+      <div className="absolute bottom-4 md:bottom-8 left-4 md:left-8 text-xs md:text-sm">
         <p>
-          <span className="text-white/50 mr-2">E</span>info@dayrent.com
-        </p>
-        <p className="hidden sm:block">
-          <span className="text-white/50 mr-2">T</span>+1 234 567 890
+          <span className="text-white/50 mr-2">E</span>dayrentjiang@gmail.com
         </p>
       </div>
 
       {/* Bottom Right - Social Links */}
       <div className="absolute bottom-4 md:bottom-8 right-4 md:right-8 flex items-center gap-3 md:gap-6 text-xs md:text-sm">
-        <a href="#" className="hover:text-white/70 transition-colors">
-          Twitter
-        </a>
-        <a href="#" className="hover:text-white/70 transition-colors">
-          LinkedIn
-        </a>
-        <a href="#" className="hover:text-white/70 transition-colors">
+        <a
+          href="https://github.com/dayrentjiang"
+          className="hover:text-white/70 transition-colors"
+        >
           GitHub
+        </a>
+        <a
+          href="https://linkedin.com/in/dayrent-tjiang"
+          className="hover:text-white/70 transition-colors"
+        >
+          LinkedIn
         </a>
       </div>
     </section>

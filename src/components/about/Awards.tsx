@@ -2,36 +2,12 @@ import Image from "next/image";
 
 const awards = [
   {
-    title: "KSCSS Award",
-    subtitle: "Top Developer Award",
+    title: "Megahack",
+    subtitle: "Web3 Hackathon Finalist",
     description:
-      "Recognized for consistent delivery, code quality, and client satisfaction.",
-    year: "2024",
-    image: "/awards/kscss.png",
-  },
-  {
-    title: "Awards DEV",
-    subtitle: "Dev Of The Years",
-    description:
-      "Recognitions earned for excellence in modern web development.",
-    year: "2022",
-    image: "/awards/dev.png",
-  },
-  {
-    title: "Award",
-    subtitle: "Best Experience Apps Of Month",
-    description:
-      "Celebrating milestones in software, design, and technical impact.",
-    year: "2020",
-    image: "/awards/experience.png",
-  },
-  {
-    title: "DEVIES Awards",
-    subtitle: "Top Developer Award",
-    description:
-      "Proof of passion, skill, and results in development journey.",
-    year: "2018",
-    image: "/awards/devies.png",
+      "Built a web3 lending solution on Solana using Next.js, Express, and the Anchor Framework with Rust. Made it to the final pitching round.",
+    year: "2025",
+    image: "/monashblockchain.png",
     hasDot: true,
   },
 ];
@@ -42,9 +18,9 @@ export default function Awards() {
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="flex flex-col md:flex-row justify-between items-start gap-4 mb-12">
-          <p className="text-[#4ade80] text-sm">// Awards</p>
+          <p className="text-[#4ade80] text-sm">// Hackathons</p>
           <h2 className="text-3xl md:text-5xl font-bold md:text-right max-w-md leading-tight">
-            Awards & Recognition
+            Hackathons
           </h2>
         </div>
 
