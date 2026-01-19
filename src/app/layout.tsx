@@ -17,6 +17,23 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Dayrent Tjiang | Full Stack Developer",
   description: "Personal portfolio of Dayrent Tjiang",
+  icons: {
+    icon: "/dtlogo.png",
+    shortcut: "/dtlogo.png",
+    apple: "/dtlogo.png",
+  },
+  openGraph: {
+    title: "Dayrent Tjiang | Full Stack Developer",
+    description: "Personal portfolio of Dayrent Tjiang",
+    images: ["/dtlogo.png"],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Dayrent Tjiang | Full Stack Developer",
+    description: "Personal portfolio of Dayrent Tjiang",
+    images: ["/dtlogo.png"],
+  },
 };
 
 export default function RootLayout({
