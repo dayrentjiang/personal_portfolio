@@ -12,6 +12,7 @@ export interface Project {
     liveUrl?: string;
     githubUrl?: string;
     videoUrl?: string;
+    instagramUrl?: string;
     images: string[];
   };
 }
@@ -61,6 +62,28 @@ export const projects: Project[] = [
     },
   },
   {
+    slug: "keepitreelcam",
+    title: "KeepIt Reel",
+    description:
+      "Instant replay device system that lets athletes capture their best moments in 1080p HD. @keepitreelcam on Instagram",
+    image: "/keepitreel.png",
+    tags: ["Next.js", "Python Fast API", "Raspberry PI"],
+    details: {
+      overview:
+        "Built KeepIt Reel, a sports tech product that captures the last 45 seconds of gameplay with one button press.",
+      features: [
+        "Product showcase",
+        "How it works section",
+        "Clean, modern design",
+        "Responsive layout",
+      ],
+      techStack: ["Next.js", "Tailwind CSS", "TypeScript"],
+      liveUrl: "https://www.keepitreelcam.com",
+      instagramUrl: "https://instagram.com/keepitreelcam",
+      images: ["/projects/keepitreelcam.png"],
+    },
+  },
+  {
     slug: "asg",
     title: "ASG Automotive",
     description:
@@ -82,29 +105,8 @@ export const projects: Project[] = [
     },
   },
   {
-    slug: "keepitreelcam",
-    title: "KeepIt Reel",
-    description:
-      "Instant replay device system that lets athletes capture their best moments in 1080p HD.",
-    image: "/keepitreel.png",
-    tags: ["Next.js", "Tailwind CSS", "TypeScript"],
-    details: {
-      overview:
-        "Built KeepIt Reel, a sports tech product that captures the last 45 seconds of gameplay with one button press.",
-      features: [
-        "Product showcase",
-        "How it works section",
-        "Clean, modern design",
-        "Responsive layout",
-      ],
-      techStack: ["Next.js", "Tailwind CSS", "TypeScript"],
-      liveUrl: "https://www.keepitreelcam.com",
-      images: ["/projects/keepitreelcam.png"],
-    },
-  },
-  {
     slug: "smart-trashcan",
-    title: "Smart Trashcan",
+    title: "Smart AI Trashcan",
     description:
       "A trashcan that automatically sorts your waste when you throw it in. Built with Arduino, Raspberry Pi, and sensors for a uni project.",
     image: "/smarttrash.png",

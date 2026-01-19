@@ -9,14 +9,14 @@ const steps = [
     number: "02",
     title: "Build & Develop",
     description:
-      "Build pixel-perfect user interfaces and robust backend systems in parallel. I ensure that every component—UI or API—is maintainable.",
+      "Build pixel-perfect user interfaces and robust backend systems in parallel. I ensure that every component UI or API is maintainable.",
     hasDot: true,
   },
   {
     number: "03",
     title: "Launch & Support",
     description:
-      "I also provide post-launch monitoring, performance optimization, and ongoing iteration support to keep your product growing.",
+      "I also provide post launch monitoring, performance optimization, and ongoing iteration support to keep your product growing.",
   },
 ];
 
@@ -45,7 +45,9 @@ export default function Process() {
             <div
               key={index}
               className={`py-8 px-6 ${
-                index !== steps.length - 1 ? "md:border-r md:border-white/10" : ""
+                index !== steps.length - 1
+                  ? "md:border-r md:border-white/10"
+                  : ""
               }`}
             >
               {/* Large Number */}

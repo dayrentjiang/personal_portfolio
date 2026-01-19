@@ -91,10 +91,10 @@ export default function AboutHero() {
           }}
         >
           <Image
-            src="/dayrent.png"
+            src="/dayrents.png"
             alt="Developer"
-            width={350}
-            height={450}
+            width={450}
+            height={250}
             className="object-cover"
             priority
           />

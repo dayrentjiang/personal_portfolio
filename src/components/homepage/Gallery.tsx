@@ -5,8 +5,8 @@ import { useEffect, useRef, useState } from "react";
 
 const photos = [
   { src: "/IMG_2749.jpg", alt: "Photo 1", rotate: "-6deg" },
-  { src: "/IMG_2749.jpg", alt: "Photo 2", rotate: "3deg" },
-  { src: "/IMG_2749.jpg", alt: "Photo 3", rotate: "-4deg" },
+  { src: "/IMG_7575.jpg", alt: "Photo 2", rotate: "3deg" },
+  { src: "/keepit.JPG", alt: "Photo 3", rotate: "-4deg" },
 ];
 
 export default function Gallery() {

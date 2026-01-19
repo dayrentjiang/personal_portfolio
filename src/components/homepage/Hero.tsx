@@ -38,11 +38,11 @@ export default function Hero() {
             <div className="w-full h-full bg-linear-to-t from-green-500/40 via-green-400/20 to-transparent rounded-full scale-150"></div>
           </div>
           <Image
-            src="/dayrent.png"
+            src="/dayrents.png"
             alt="Portrait"
             width={500}
             height={600}
-            className="object-cover w-[210px] sm:w-[250px] md:w-[300px] lg:w-[400px] h-auto"
+            className="object-cover w-[250px] sm:w-[300px] md:w-[400px] lg:w-[500px] h-auto"
             priority
           />
         </div>

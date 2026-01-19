@@ -1,27 +1,22 @@
 "use client";
 
-import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
-
 const services = [
   {
     title: "Web Applications",
     number: "01",
     description:
-      "I build full web apps from start to finish — frontend, backend, the whole thing.",
+      "I build full web apps from start to finish: frontend, backend, the whole thing.",
     hasLink: true,
   },
   {
     title: "Websites",
     number: "02",
-    description:
-      "Marketing sites, landing pages, portfolios — clean and fast.",
+    description: "Marketing sites, landing pages, portfolios, clean and fast.",
   },
   {
     title: "Mobile Apps",
     number: "03",
-    description:
-      "Cross-platform mobile apps using React Native.",
+    description: "Cross-platform mobile apps using React Native/Flutter.",
   },
   {
     title: "Consulting",
@@ -32,31 +27,8 @@ const services = [
 ];
 
 export default function Services() {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const [scrollY, setScrollY] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!sectionRef.current) return;
-
-      const rect = sectionRef.current.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-
-      // Calculate how far we've scrolled into this section
-      if (rect.top < windowHeight && rect.bottom > 0) {
-        const progress = (windowHeight - rect.top) / (windowHeight + rect.height);
-        setScrollY(progress * 100);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    handleScroll(); // Initial call
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
-    <section ref={sectionRef} className="min-h-screen bg-[#0a0a0a] px-4 md:px-8 py-24 overflow-hidden">
+    <section className="min-h-screen bg-[#0a0a0a] px-4 md:px-8 py-24 overflow-hidden">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="flex flex-col md:flex-row justify-between items-start gap-4 mb-12">
@@ -74,33 +46,9 @@ export default function Services() {
         </div>
 
         {/* Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Left - Image with Parallax */}
-          <div className="relative aspect-[4/3] rounded-lg overflow-hidden bg-[#1a1a1a]">
-            <div
-              className="absolute inset-0 scale-125"
-              style={{
-                transform: `translateY(${scrollY * 0.3 - 15}px) scale(1.25)`,
-                transition: "transform 0.1s ease-out",
-              }}
-            >
-              <Image
-                src="/services.png"
-                alt="Web Development"
-                fill
-                className="object-cover"
-              />
-            </div>
-          </div>
-
-          {/* Right - Services List */}
-          <div
-            className="space-y-0"
-            style={{
-              transform: `translateY(${scrollY * -0.15 + 10}px)`,
-              transition: "transform 0.1s ease-out",
-            }}
-          >
+        <div className="max-w-2xl mx-auto">
+          {/* Services List */}
+          <div className="space-y-0">
             {services.map((service, index) => (
               <div
                 key={index}
