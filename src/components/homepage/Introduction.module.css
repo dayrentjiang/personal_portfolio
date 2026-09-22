@@ -1,0 +1,98 @@
+.section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  min-height: 100svh;
+  padding: clamp(72px, 6vw, 96px) 6.7%;
+  background: var(--intro-surface);
+  color: #252622;
+  font-family: var(--font-geist-sans), Arial, sans-serif;
+}
+
+.section::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: 0 0 auto;
+  height: min(360px, 50%);
+  background: var(--hero-bridge);
+  mask-image: linear-gradient(#000, transparent);
+  pointer-events: none;
+}
+
+.clouds {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(90deg, rgb(246 241 235 / 80%), rgb(246 241 235 / 52%) 60%, rgb(246 241 235 / 28%));
+  pointer-events: none;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1216px;
+  min-width: 0;
+  margin: 0 auto;
+}
+
+.heading {
+  max-width: calc(100% - 404px);
+  margin: 0;
+  font-size: clamp(42px, 4.9vw, 76px);
+  font-weight: 700;
+  line-height: 1.07;
+  letter-spacing: -.045em;
+}
+
+.description {
+  max-width: min(720px, calc(100% - 404px));
+  margin: 28px 0 0;
+  color: #51534d;
+  font-size: 17px;
+  line-height: 1.7;
+  letter-spacing: -.015em;
+}
+
+.orb {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  display: block;
+  width: 360px;
+  height: 360px;
+  pointer-events: none;
+}
+
+@media (max-width: 1100px) {
+  .heading, .description { max-width: calc(100% - 292px); }
+  .orb { width: 260px; height: 260px; }
+}
+
+@media (max-width: 900px) {
+  .section { padding-left: 7%; padding-right: 7%; }
+  .heading { max-width: calc(100% - 228px); font-size: clamp(42px, 5.8vw, 58px); }
+  .description { max-width: calc(100% - 228px); }
+  .orb { width: 200px; height: 200px; }
+}
+
+@media (max-width: 600px) {
+  .section { padding: 80px 6%; }
+  .section::after { background: rgb(246 241 235 / 86%); }
+  .heading { max-width: 450px; font-size: clamp(35px, 9.2vw, 50px); line-height: 1.1; letter-spacing: -.04em; }
+  .linebreak { display: none; }
+  .description { max-width: none; margin-top: 24px; font-size: 16px; line-height: 1.75; }
+  .orb { position: static; transform: none; width: min(280px, 100%); height: auto; aspect-ratio: 1; margin: 36px auto 0; }
+}

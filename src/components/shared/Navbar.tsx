@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { usePathname } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 
 const navLinks = [
   { name: "HOME", href: "/" },
@@ -10,76 +11,76 @@ const navLinks = [
   { name: "CONTACT", href: "/contact" },
 ];
 
+function BrandMark() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="m12 1 9.5 5.5v11L12 23l-9.5-5.5v-11L12 1Z" fill="currentColor" />
+      <path d="m12 4 6.8 4-6.8 4-6.8-4 6.8-4Zm0 8v8M5.2 8v8l6.8-4 6.8 4V8" stroke="var(--brand-line, #dedfdd)" strokeWidth="1" />
+    </svg>
+  );
+}
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
+  const menuButton = useRef<HTMLButtonElement>(null);
+  const menuDialog = useRef<HTMLDialogElement>(null);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const dialog = menuDialog.current;
+    const trigger = menuButton.current;
+    const previousOverflow = document.body.style.overflow;
+    dialog?.showModal();
+    document.body.style.overflow = "hidden";
+    return () => {
+      dialog?.close();
+      document.body.style.overflow = previousOverflow;
+      trigger?.focus();
+    };
+  }, [isOpen]);
 
   return (
     <>
-      {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 py-6">
-        <Link href="/" className="text-sm font-bold tracking-wider">
-          DAYRENT TJIANG
+      <header className={`site-header ${pathname === "/" ? "site-header-light" : "site-header-dark"}`}>
+        <Link href="/" className="site-brand" aria-label="Dayrent Tjiang home">
+          <BrandMark /><span>Dayrent Tjiang</span>
         </Link>
-        <button
-          onClick={() => setIsOpen(true)}
-          className="flex items-center gap-3 border border-white/20 rounded-full px-5 py-2.5 hover:bg-white/5 transition-colors"
-        >
-          <span className="text-sm">Menu</span>
-          <span className="text-lg">&lt;&gt;</span>
-        </button>
+        <div className="site-header-actions">
+          <Link href="/contact" className="site-contact">
+            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <circle cx="10" cy="10" r="8" />
+              <ellipse cx="10" cy="10" rx="3.5" ry="8" />
+              <path d="M2 10h16M4 5.5h12M4 14.5h12" />
+            </svg>
+            <span>Let&apos;s Talk</span>
+          </Link>
+          <button ref={menuButton} onClick={() => setIsOpen(true)} className="site-menu-button" aria-label="Open menu" aria-expanded={isOpen} aria-controls="site-menu">
+            <span /><span />
+          </button>
+        </div>
       </header>
-
-      {/* Menu Overlay */}
-      {isOpen && (
-        <div className="fixed inset-0 z-[100] bg-[#0a0a0a]">
-          {/* Close Button */}
-          <div className="flex items-center justify-between px-8 py-6">
-            <Link
-              href="/"
-              onClick={() => setIsOpen(false)}
-              className="text-sm font-bold tracking-wider"
-            >
-              DAYRENT TJIANG
-            </Link>
-            <button
-              onClick={() => setIsOpen(false)}
-              className="flex items-center gap-3 border border-white/20 rounded-full px-5 py-2.5 hover:bg-white/5 transition-colors"
-            >
-              <span className="text-sm">Close</span>
-              <span className="text-lg">✕</span>
-            </button>
-          </div>
-
-          {/* Menu Content */}
-          <div className="flex flex-col items-center justify-center h-[calc(100vh-100px)]">
-            <nav className="flex flex-col items-center gap-8">
-              {navLinks.map((link, index) => (
-                <Link
-                  key={index}
-                  href={link.href}
-                  onClick={() => setIsOpen(false)}
-                  className="text-5xl md:text-7xl font-bold hover:text-[#4ade80] transition-colors"
-                >
-                  {link.name}
-                </Link>
-              ))}
-            </nav>
-
-            {/* Social Links */}
-            <div className="flex gap-8 mt-16 text-sm text-white/60">
-              <a href="#" className="hover:text-white transition-colors">
-                TWITTER
-              </a>
-              <a href="#" className="hover:text-white transition-colors">
-                LINKEDIN
-              </a>
-              <a href="#" className="hover:text-white transition-colors">
-                GITHUB
-              </a>
-            </div>
+      <dialog ref={menuDialog} id="site-menu" className="site-menu-dialog" aria-label="Main navigation" onCancel={() => setIsOpen(false)}>
+        <div className="site-menu-top">
+          <Link href="/" onClick={() => setIsOpen(false)} className="site-brand">
+            <BrandMark /><span>Dayrent Tjiang</span>
+          </Link>
+          <button onClick={() => setIsOpen(false)} className="site-menu-close" aria-label="Close menu">✕</button>
+        </div>
+        <div className="site-menu-content">
+          <nav aria-label="Main">
+            {navLinks.map((link) => (
+              <Link key={link.href} href={link.href} onClick={() => setIsOpen(false)} aria-current={pathname === link.href ? "page" : undefined}>
+                {link.name}
+              </Link>
+            ))}
+          </nav>
+          <div className="site-menu-socials">
+            <a href="https://linkedin.com/in/dayrent-tjiang">LINKEDIN</a>
+            <a href="https://github.com/dayrentjiang">GITHUB</a>
           </div>
         </div>
-      )}
+      </dialog>
     </>
   );
 }

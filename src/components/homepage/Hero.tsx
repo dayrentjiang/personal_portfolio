@@ -1,96 +1,73 @@
 import Image from "next/image";
+import HeroScene from "./HeroScene";
+
+// A small pixel alphabet keeps the display lettering independent of fonts.
+const glyphs: Record<string, string[]> = {
+  A: ["00100", "01110", "11011", "11011", "11111", "11011", "11011"],
+  D: ["11110", "11011", "11011", "11011", "11011", "11011", "11110"],
+  E: ["11111", "11000", "11000", "11110", "11000", "11000", "11111"],
+  G: ["01111", "11000", "11000", "11011", "11011", "11011", "01111"],
+  I: ["111", "010", "010", "010", "010", "010", "111"],
+  J: ["00111", "00011", "00011", "00011", "11011", "11011", "01110"],
+  N: ["11001", "11101", "11101", "11111", "11011", "11011", "11001"],
+  R: ["11110", "11011", "11011", "11110", "11100", "11010", "11011"],
+  T: ["11111", "11111", "00100", "00100", "00100", "00100", "00100"],
+  Y: ["11011", "11011", "11011", "01110", "00100", "00100", "00100"],
+};
+
+function PixelWord({ word, className }: { word: string; className: string }) {
+  let offset = 0;
+  const paths = [...word].map((letter) => {
+    const rows = glyphs[letter];
+    const path = rows.flatMap((row, y) =>
+      [...row].map((pixel, x) =>
+        pixel === "1" ? `M${offset + x} ${y}h1v1h-1z` : "",
+      ),
+    ).join("");
+    offset += rows[0].length + 1;
+    return <path key={`${letter}-${offset}`} d={path} />;
+  });
+
+  return (
+    <svg className={className} viewBox={`0 0 ${offset - 1} 7`} preserveAspectRatio="none" fill="currentColor" aria-hidden="true">
+      {paths}
+    </svg>
+  );
+}
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen overflow-hidden">
-      {/* Main Hero Content */}
-      <div className="relative min-h-screen flex flex-col justify-center px-4 md:px-8 pt-20">
-        {/* Hero Text Section */}
-        <div className="max-w-2xl z-20">
-          <p className="text-base md:text-lg mb-2 md:mb-4">
-            Hey, I build things
-          </p>
-
-          {/* Large Name with Outline Effect */}
-          <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-[8rem] font-bold leading-none tracking-tight">
-            <span
-              className="text-transparent bg-clip-text"
-              style={{
-                WebkitTextStroke: "1.5px #4ade80",
-              }}
-            >
-              DAYRENT TJIANG
-            </span>
-            <span className="inline-block w-2 h-2 md:w-3 md:h-3 bg-[#4ade80] rounded-full ml-1 md:ml-2 mb-2 md:mb-4"></span>
-          </h1>
-
-          {/* Mobile Description - shown only on mobile */}
-          <p className="md:hidden text-sm leading-relaxed text-white/80 mt-6 max-w-sm">
-            I&apos;m a full stack developer. I care about writing clean code and
-            making things that feel good to use.
-          </p>
-        </div>
-
-        {/* Center Portrait with Green Glow */}
-        <div className="absolute left-1/2 bottom-0 -translate-x-1/2 z-20">
-          {/* Green Glow Effect */}
-          <div className="absolute inset-0 -z-10 blur-3xl opacity-60">
-            <div className="w-full h-full bg-linear-to-t from-green-500/40 via-green-400/20 to-transparent rounded-full scale-150"></div>
-          </div>
-          <Image
-            src="/dayrents.png"
-            alt="Portrait"
-            width={500}
-            height={600}
-            className="object-cover w-[250px] sm:w-[300px] md:w-[400px] lg:w-[500px] h-auto"
-            priority
-          />
-        </div>
-
-        {/* Right Side Description - hidden on mobile */}
-        <div className="hidden md:block absolute right-8 top-1/2 -translate-y-1/2 max-w-xs text-right">
-          {/* Vertical Line */}
-          <div className="absolute right-0 -top-16 w-px h-12 bg-white/30"></div>
-
-          {/* Scroll Indicator */}
-          <div className="absolute right-0 -top-32 flex flex-col items-center">
-            <span
-              className="text-xs tracking-widest"
-              style={{ writingMode: "vertical-rl" }}
-            >
-              SCROLL
-            </span>
-          </div>
-
-          <p className="text-sm leading-relaxed text-white/80 mt-8">
-            I&apos;m a full stack developer. I care about clean code and good
-            user experience. I work end to end, from idea to shipped product.
-          </p>
-        </div>
+    <HeroScene>
+      <h1 id="hero-title" className="sr-only">Dayrent Tjiang — Full Stack Developer</h1>
+      <div className="hero-ambient" aria-hidden="true" />
+      <PixelWord word="DAYRENT" className="hero-name hero-name-first" />
+      <div className="hero-portrait" aria-hidden="true">
+        <Image
+          src="/dayrent-original.webp"
+          alt=""
+          width={3024}
+          height={4032}
+          className="hero-portrait-image"
+          unoptimized
+          priority
+        />
       </div>
-
-      {/* Bottom Left - Contact Info */}
-      <div className="absolute bottom-4 md:bottom-8 left-4 md:left-8 text-xs md:text-sm">
-        <p>
-          <span className="text-white/50 mr-2">E</span>dayrentjiang@gmail.com
+      <PixelWord word="TJIANG" className="hero-name hero-name-last" />
+      <div className="hero-color-wash" aria-hidden="true" />
+      <div className="hero-grain" aria-hidden="true" />
+      <div className="hero-introduction">
+        <p className="hero-greeting">I&apos;m Dayrent Tjiang!</p>
+        <p className="hero-description">
+          Turning ideas into thoughtful<br className="hero-desktop-break" /> digital experiences.<br />
+          Clean code, intuitive design, and<br className="hero-desktop-break" /> products that feel good to use.
         </p>
+        <div className="hero-chevron" aria-hidden="true"><span /><span /></div>
       </div>
-
-      {/* Bottom Right - Social Links */}
-      <div className="absolute bottom-4 md:bottom-8 right-4 md:right-8 flex items-center gap-3 md:gap-6 text-xs md:text-sm">
-        <a
-          href="https://github.com/dayrentjiang"
-          className="hover:text-white/70 transition-colors"
-        >
-          GitHub
-        </a>
-        <a
-          href="https://linkedin.com/in/dayrent-tjiang"
-          className="hover:text-white/70 transition-colors"
-        >
-          LinkedIn
-        </a>
-      </div>
-    </section>
+      <ol className="hero-roles" aria-label="What I do">
+        <li><span>(01)</span> Full Stack Developer</li>
+        <li><span>(02)</span> Creative Thinker</li>
+        <li><span>(03)</span> Product Builder</li>
+      </ol>
+    </HeroScene>
   );
 }
