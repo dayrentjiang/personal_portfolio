@@ -26,7 +26,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       <div className="max-w-4xl mx-auto pt-16">
         {/* Back Link */}
         <Link
-          href="/#projects"
+          href="/#portfolio"
           className="text-[#4ade80] text-sm hover:underline mb-8 inline-block"
         >
           &larr; Back to Projects

@@ -1,0 +1,93 @@
+.banner {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  width: 100%;
+  padding-left: clamp(24px, 3vw, 56px);
+  min-width: 0;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  color: var(--page-muted);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.pause {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.pause:hover { background: rgb(41 50 52 / 7%); }
+.pause:focus-visible { outline: 2px solid var(--page-accent); outline-offset: 3px; }
+.pause svg { width: 12px; height: 12px; }
+
+.window {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  animation: drift 38s linear infinite;
+}
+
+.banner:hover .track,
+.track[data-paused="true"] { animation-play-state: paused; }
+
+.logos {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-shrink: 0;
+  min-width: 100vw;
+  gap: 48px;
+  list-style: none;
+  margin: 0;
+  padding: 12px 48px 12px 0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #798181;
+  white-space: nowrap;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -.04em;
+}
+
+.logo img { opacity: .48; }
+
+@keyframes drift { to { transform: translateX(-50%); } }
+
+@media (max-width: 900px) {
+  .banner { flex-direction: column; align-items: stretch; gap: 12px; }
+  .logos { gap: 36px; padding-right: 36px; }
+  .logo { font-size: 20px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .banner { padding-right: clamp(24px, 3vw, 56px); }
+  .pause, .logos[aria-hidden="true"] { display: none; }
+  .window { overflow: visible; mask-image: none; }
+  .track { animation: none; width: auto; }
+  .logos { flex-wrap: wrap; flex-shrink: 1; justify-content: flex-start; min-width: 0; gap: 24px; padding: 0; }
+}

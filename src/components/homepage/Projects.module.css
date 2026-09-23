@@ -35,7 +35,18 @@
 .allProjects svg, .contactLink svg { width: 16px; height: 16px; }
 .allProjects:hover { background: #fff; border-color: #8faabb; }
 .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
-.card, .contactCard { position: relative; display: block; min-width: 0; aspect-ratio: 4 / 5; overflow: hidden; border-radius: 18px; }
+.card, .contactCard, .placeholder { position: relative; display: block; min-width: 0; aspect-ratio: 4 / 5; overflow: hidden; border-radius: 18px; }
+.placeholder {
+  --placeholder-tint: #e3e2de;
+  border: 1px solid var(--page-line);
+  background: linear-gradient(145deg, rgb(255 255 255 / 55%), var(--placeholder-tint));
+}
+.placeholder:nth-child(3n + 2) { --placeholder-tint: #dce5e8; }
+.placeholder:nth-child(3n + 3) { --placeholder-tint: #e7e1d8; }
+.placeholderGraphic { position: absolute; top: 38%; left: 50%; width: 80px; height: 80px; transform: translate(-50%, -50%); color: #9babad; }
+.placeholderContent { position: absolute; inset: auto 26px 28px; }
+.placeholderContent h3 { margin: 0; color: var(--page-ink); font-size: 24px; font-weight: 500; letter-spacing: -.04em; }
+.placeholderContent p { margin: 8px 0 0; color: var(--page-muted); font-size: 13px; }
 .card { background: #314c5b; color: #fff; box-shadow: 0 3px 8px rgb(37 65 82 / 4%); transition: transform .35s, box-shadow .35s; }
 .image { object-fit: cover; transition: transform .65s cubic-bezier(.2, .7, .2, 1); }
 .shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgb(9 22 31 / 16%) 0%, transparent 28%, rgb(9 22 31 / 12%) 42%, rgb(9 22 31 / 80%) 78%, #0e202d 100%); }

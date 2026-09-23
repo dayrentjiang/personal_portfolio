@@ -3,7 +3,7 @@ import Projects from "@/components/homepage/Projects";
 
 export const metadata: Metadata = {
   title: "Projects | Dayrent Tjiang",
-  description: "Selected websites, platforms, and connected products built by Dayrent Tjiang.",
+  description: "A selection of work by Dayrent Tjiang. Project details coming soon.",
 };
 
 export default function ProjectsPage() {

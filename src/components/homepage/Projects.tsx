@@ -14,6 +14,7 @@ function Arrow() {
 
 export default function Projects({ standalone = false }: { standalone?: boolean }) {
   const Heading = standalone ? "h1" : "h2";
+  const hasProjects = projects.length > 0;
 
   return (
     <section id="portfolio" className={`${styles.section} ${standalone ? styles.standalone : ""}`} aria-labelledby="portfolio-title">
@@ -22,7 +23,7 @@ export default function Projects({ standalone = false }: { standalone?: boolean 
         <header className={styles.header}>
           <div>
             <Heading id="portfolio-title" className={styles.heading}>My Portfolio<span>.</span></Heading>
-            <p className={styles.intro}>Real businesses. Thoughtful software. Built from the ground up.</p>
+            <p className={styles.intro}>{hasProjects ? "Real businesses. Thoughtful software. Built from the ground up." : "Selected projects, coming soon."}</p>
           </div>
           <Link className={styles.allProjects} href={standalone ? "/contact" : "/projects"}>
             {standalone ? "Let’s build something" : "View All Projects"}<Arrow />
@@ -30,6 +31,19 @@ export default function Projects({ standalone = false }: { standalone?: boolean 
         </header>
 
         <div className={styles.grid}>
+          {!hasProjects && Array.from({ length: 5 }, (_, index) => (
+            <article key={index} className={styles.placeholder}>
+              <svg className={styles.placeholderGraphic} viewBox="0 0 80 80" fill="none" aria-hidden="true">
+                <rect x="21" y="13" width="46" height="46" rx="9" stroke="currentColor" strokeWidth="1" />
+                <rect x="13" y="21" width="46" height="46" rx="9" fill="var(--page-surface)" stroke="currentColor" strokeWidth="1" />
+                <path d="M28 44h16M36 36v16" stroke="currentColor" strokeWidth="1" strokeLinecap="round" />
+              </svg>
+              <div className={styles.placeholderContent}>
+                <h3>Project {String(index + 1).padStart(2, "0")}</h3>
+                <p>Coming soon</p>
+              </div>
+            </article>
+          ))}
           {projects.map((project, index) => (
             <Link key={project.slug} href={`/projects/${project.slug}`} className={styles.card} aria-label={`Explore ${project.title}`}>
               <Image
