@@ -4,8 +4,13 @@
   --background: #0a0a0a;
   --foreground: #ffffff;
   --accent-green: #4ade80;
-  --intro-surface: #f6f1eb;
-  --hero-bridge: linear-gradient(105deg, #e7bd93 0%, #eddfd2 48%, #e7c4d0 100%);
+  --page-surface: #f3f2ef;
+  --page-ink: #293234;
+  --page-muted: #657176;
+  --page-accent: #55778d;
+  --page-line: #d5dcdd;
+  --intro-surface: var(--page-surface);
+  --hero-transition: linear-gradient(90deg, #b98561 0%, #c8afa0 48%, #ca9fa9 100%);
 }
 
 @theme inline {
@@ -20,6 +25,27 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Keep the homepage and portfolio on the same surface, including the footer. */
+.home-page,
+body:has(.home-page) .site-footer,
+body:has(.portfolio-page) .site-footer {
+  --section-surface: var(--page-surface);
+  --section-ink: var(--page-ink);
+  --section-muted: var(--page-muted);
+  --section-accent: var(--page-accent);
+  --section-accent-hover: #456579;
+  --section-line: var(--page-line);
+  --section-button-ink: #fff;
+  --section-glow: #9bafba;
+  background: var(--page-surface);
+  color: var(--page-ink);
+  font-family: var(--font-geist-sans), Arial, sans-serif;
+}
+
+.site-footer-glow {
+  mask-image: linear-gradient(transparent, #000 35%, #000 70%, transparent);
 }
 
 @keyframes marquee {
@@ -59,9 +85,9 @@ body {
   position: absolute;
   z-index: 6;
   inset: auto 0 0;
-  height: clamp(36px, 5.5svh, 64px);
-  background: var(--hero-bridge);
-  mask-image: linear-gradient(transparent, rgb(0 0 0 / 15%) 35%, #000);
+  height: clamp(80px, 14svh, 144px);
+  background: var(--hero-transition);
+  mask-image: linear-gradient(transparent, rgb(0 0 0 / 15%) 35%, #000 98%);
   pointer-events: none;
 }
 
@@ -131,9 +157,9 @@ body {
 
 .site-header { position: absolute; z-index: 50; inset: 0 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 3.9vh 6.7%; }
 .site-header-light { color: #171c1d; }
-.site-header-dark { color: #fff; --brand-line: #171c1d; }
+.site-header-dark { color: #fff; }
 .site-brand { display: inline-flex; align-items: center; gap: 7px; font-size: clamp(13px, 1.55vw, 22px); font-weight: 700; letter-spacing: -.04em; }
-.site-brand svg { width: 1.18em; height: 1.18em; }
+.site-brand-monogram { font-family: Georgia, "Times New Roman", serif; font-size: 1.3em; font-weight: 500; line-height: 1; letter-spacing: -.12em; padding-right: .12em; }
 .site-header-actions { display: flex; align-items: center; gap: 30px; }
 .site-contact { display: inline-flex; align-items: center; gap: 6px; font-size: clamp(12px, 1.2vw, 17px); font-weight: 600; letter-spacing: -.045em; }
 .site-contact svg { width: 1.2em; height: 1.2em; stroke: currentColor; stroke-width: 1; }

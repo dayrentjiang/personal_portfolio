@@ -75,7 +75,6 @@ export default function AboutHero() {
             transform: `translateY(-${headerTranslateY}px)`,
           }}
         >
-          <p className="text-[#4ade80] text-sm mb-6">// Hello World</p>
           <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-tight tracking-tight">
             I AM A
             <br />

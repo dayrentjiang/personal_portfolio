@@ -15,8 +15,7 @@ export default function Clients() {
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="flex justify-between items-start mb-12">
-          <p className="text-[#4ade80] text-sm">// My Client</p>
-          <h2 className="text-4xl md:text-5xl font-bold text-right max-w-sm leading-tight">
+          <h2 className="text-4xl md:text-5xl font-bold max-w-sm leading-tight">
             Worked With Amazing Clients
           </h2>
         </div>

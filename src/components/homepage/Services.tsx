@@ -28,21 +28,20 @@ const services = [
 
 export default function Services() {
   return (
-    <section className="min-h-screen bg-[#0a0a0a] px-4 md:px-8 py-24 overflow-hidden">
+    <section className="min-h-screen bg-[var(--section-surface,#0a0a0a)] px-4 md:px-8 py-24 overflow-hidden">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="flex flex-col md:flex-row justify-between items-start gap-4 mb-12">
-          <p className="text-[#4ade80] text-sm">// Service</p>
-          <h2 className="text-3xl md:text-4xl font-bold md:text-right max-w-lg leading-tight">
+          <h2 className="text-3xl md:text-4xl font-bold max-w-lg leading-tight">
             What I Can Help You With
           </h2>
         </div>
 
         {/* Decorative Line */}
         <div className="flex items-center gap-2 mb-16">
-          <span className="text-[#4ade80]">&lt;/</span>
-          <div className="flex-1 h-px bg-white/20"></div>
-          <span className="text-[#4ade80]">&gt;</span>
+          <span className="text-[var(--section-accent,#4ade80)]">&lt;/</span>
+          <div className="flex-1 h-px bg-[var(--section-line,rgba(255,255,255,0.2))]"></div>
+          <span className="text-[var(--section-accent,#4ade80)]">&gt;</span>
         </div>
 
         {/* Content Grid */}
@@ -52,15 +51,15 @@ export default function Services() {
             {services.map((service, index) => (
               <div
                 key={index}
-                className="border-b border-white/10 py-6 first:pt-0"
+                className="border-b border-[var(--section-line,rgba(255,255,255,0.1))] py-6 first:pt-0"
               >
                 <div className="flex items-center justify-between mb-2">
                   <h3 className="font-semibold">{service.title}</h3>
-                  <span className="text-white/40">({service.number})</span>
+                  <span className="text-[var(--section-muted,rgba(255,255,255,0.4))]">({service.number})</span>
                 </div>
 
                 {service.description && (
-                  <p className="text-white/60 text-sm leading-relaxed mb-4">
+                  <p className="text-[var(--section-muted,rgba(255,255,255,0.6))] text-sm leading-relaxed mb-4">
                     {service.description}
                   </p>
                 )}
@@ -68,7 +67,7 @@ export default function Services() {
                 {service.hasLink && (
                   <a
                     href="/contact"
-                    className="inline-flex items-center gap-2 text-white text-sm border-b border-white/50 pb-1 hover:border-white transition-colors"
+                    className="inline-flex items-center gap-2 text-[var(--section-ink,#fff)] text-sm border-b border-[var(--section-line,rgba(255,255,255,0.5))] pb-1 hover:border-[var(--section-accent,#fff)] transition-colors"
                   >
                     Hire Me
                     <span className="text-xs">↗</span>

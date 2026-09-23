@@ -18,21 +18,24 @@ export const metadata: Metadata = {
   title: "Dayrent Tjiang | Full Stack Developer",
   description: "Personal portfolio of Dayrent Tjiang",
   icons: {
-    icon: "/dtlogo.png",
-    shortcut: "/dtlogo.png",
-    apple: "/dtlogo.png",
+    icon: [
+      { url: "/favicon.ico?v=dayrent-photo", sizes: "16x16 32x32 48x48 256x256" },
+      { url: "/dayrent-icon.png", type: "image/png", sizes: "512x512" },
+    ],
+    shortcut: "/favicon.ico?v=dayrent-photo",
+    apple: { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
   },
   openGraph: {
     title: "Dayrent Tjiang | Full Stack Developer",
     description: "Personal portfolio of Dayrent Tjiang",
-    images: ["/dtlogo.png"],
+    images: [{ url: "/dayrent-icon.png", width: 512, height: 512, alt: "Dayrent Tjiang" }],
     type: "website",
   },
   twitter: {
-    card: "summary_large_image",
+    card: "summary",
     title: "Dayrent Tjiang | Full Stack Developer",
     description: "Personal portfolio of Dayrent Tjiang",
-    images: ["/dtlogo.png"],
+    images: ["/dayrent-icon.png"],
   },
 };
 

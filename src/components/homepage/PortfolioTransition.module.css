@@ -1,0 +1,25 @@
+.stack {
+  position: relative;
+  isolation: isolate;
+}
+
+.stack > :first-child {
+  position: sticky;
+  top: var(--introduction-top, 0px);
+  z-index: 0;
+}
+
+.stack > :last-child {
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 -24px 48px rgb(41 50 52 / 5%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stack > :first-child {
+    position: relative;
+    top: auto;
+  }
+
+  .stack > :last-child { box-shadow: none; }
+}

@@ -4,14 +4,17 @@ import Skills from "@/components/homepage/Skills";
 import Projects from "@/components/homepage/Projects";
 import Services from "@/components/homepage/Services";
 import Process from "@/components/homepage/Process";
+import PortfolioTransition from "@/components/homepage/PortfolioTransition";
 
 export default function Home() {
   return (
-    <main>
+    <main className="home-page">
       <Hero />
-      <Introduction />
+      <PortfolioTransition>
+        <Introduction />
+        <Projects />
+      </PortfolioTransition>
       <Skills />
-      <Projects />
       <Services />
       <Process />
     </main>

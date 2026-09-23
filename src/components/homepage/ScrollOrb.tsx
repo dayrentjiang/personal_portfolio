@@ -8,6 +8,7 @@ const moveCount = 14;
 const stages = ["working", "connecting", "weaving", "solving"] as const;
 const presets = stages.map((state) => resolvePreset(state, 64));
 const gatheringEnd = 0.35;
+const solvingStart = gatheringEnd + (1 - gatheringEnd) * 0.75;
 
 function scatteredFrame(progress: number, size: number): OrbFrame {
   const frame = stageFrame(0, 0, size);
@@ -78,6 +79,7 @@ export default function ScrollOrb() {
     const context = canvas?.getContext("2d");
     const section = canvas?.closest("section");
     if (!canvas || !context || !section) return;
+    const portfolio = section.parentElement?.querySelector<HTMLElement>("#portfolio");
 
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     let frameId = 0;
@@ -88,12 +90,20 @@ export default function ScrollOrb() {
 
       const rect = canvas.getBoundingClientRect();
       const viewport = window.innerHeight;
-      // Drive arrival from the section, not the lower-positioned canvas.
-      // Finish after the section has travelled another fifth of the viewport.
-      const sectionTop = section.getBoundingClientRect().top;
+      // The portfolio keeps moving after the introduction pins. Use its edge
+      // to keep the orb advancing while the next screen slides over it.
+      const portfolioTop = portfolio?.getBoundingClientRect().top
+        ?? section.getBoundingClientRect().bottom;
+      const distanceToOverlay = portfolioTop - viewport;
+      const approach = Math.max(0, Math.min(1,
+        1 - distanceToOverlay / section.offsetHeight,
+      ));
+      // Complete while most of the orb is still visible above the rising edge.
+      const solvingDistance = Math.max(1, viewport - (rect.top + rect.height * 0.65));
+      const overlay = Math.max(0, Math.min(1, -distanceToOverlay / solvingDistance));
       const progress = reducedMotion.matches
         ? 1
-        : Math.max(0, Math.min(1, (viewport - sectionTop) / (viewport * 1.2)));
+        : approach * solvingStart + overlay * (1 - solvingStart);
       canvas.dataset.progress = progress.toFixed(3);
       const sequenceProgress = Math.max(0, (progress - gatheringEnd) / (1 - gatheringEnd));
       const stageIndex = Math.min(stages.length - 1, Math.floor(sequenceProgress * stages.length));
@@ -133,6 +143,7 @@ export default function ScrollOrb() {
 
     const resizeObserver = new ResizeObserver(scheduleDraw);
     resizeObserver.observe(canvas);
+    resizeObserver.observe(section);
     window.addEventListener("scroll", scheduleDraw, { passive: true });
     window.addEventListener("resize", scheduleDraw);
     document.addEventListener("visibilitychange", scheduleDraw);

@@ -12,12 +12,7 @@ const navLinks = [
 ];
 
 function BrandMark() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="m12 1 9.5 5.5v11L12 23l-9.5-5.5v-11L12 1Z" fill="currentColor" />
-      <path d="m12 4 6.8 4-6.8 4-6.8-4 6.8-4Zm0 8v8M5.2 8v8l6.8-4 6.8 4V8" stroke="var(--brand-line, #dedfdd)" strokeWidth="1" />
-    </svg>
-  );
+  return <span className="site-brand-monogram" aria-hidden="true">DT</span>;
 }
 
 export default function Navbar() {
@@ -42,7 +37,7 @@ export default function Navbar() {
 
   return (
     <>
-      <header className={`site-header ${pathname === "/" ? "site-header-light" : "site-header-dark"}`}>
+      <header className={`site-header ${pathname === "/" || pathname === "/projects" ? "site-header-light" : "site-header-dark"}`}>
         <Link href="/" className="site-brand" aria-label="Dayrent Tjiang home">
           <BrandMark /><span>Dayrent Tjiang</span>
         </Link>

@@ -18,8 +18,7 @@ export default function Awards() {
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="flex flex-col md:flex-row justify-between items-start gap-4 mb-12">
-          <p className="text-[#4ade80] text-sm">// Hackathons</p>
-          <h2 className="text-3xl md:text-5xl font-bold md:text-right max-w-md leading-tight">
+          <h2 className="text-3xl md:text-5xl font-bold max-w-md leading-tight">
             Hackathons
           </h2>
         </div>

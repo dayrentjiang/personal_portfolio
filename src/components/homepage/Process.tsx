@@ -22,21 +22,20 @@ const steps = [
 
 export default function Process() {
   return (
-    <section className="min-h-screen bg-[#0a0a0a] px-8 py-24">
+    <section className="min-h-screen bg-[var(--section-surface,#0a0a0a)] px-8 py-24">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="flex justify-between items-start mb-12">
-          <p className="text-[#4ade80] text-sm">// Process</p>
-          <h2 className="text-4xl md:text-5xl font-bold text-right max-w-md leading-tight">
+          <h2 className="text-4xl md:text-5xl font-bold max-w-md leading-tight">
             My Development work Process
           </h2>
         </div>
 
         {/* Decorative Line */}
         <div className="flex items-center gap-2 mb-16">
-          <span className="text-[#4ade80]">&lt;/</span>
-          <div className="flex-1 h-px bg-white/20"></div>
-          <span className="text-[#4ade80]">&gt;</span>
+          <span className="text-[var(--section-accent,#4ade80)]">&lt;/</span>
+          <div className="flex-1 h-px bg-[var(--section-line,rgba(255,255,255,0.2))]"></div>
+          <span className="text-[var(--section-accent,#4ade80)]">&gt;</span>
         </div>
 
         {/* Steps Grid */}
@@ -46,7 +45,7 @@ export default function Process() {
               key={index}
               className={`py-8 px-6 ${
                 index !== steps.length - 1
-                  ? "md:border-r md:border-white/10"
+                  ? "md:border-r md:border-[var(--section-line,rgba(255,255,255,0.1))]"
                   : ""
               }`}
             >
@@ -55,13 +54,13 @@ export default function Process() {
                 <span
                   className="text-[10rem] font-bold leading-none text-transparent"
                   style={{
-                    WebkitTextStroke: "2px #4ade80",
+                    WebkitTextStroke: "2px var(--section-accent, #4ade80)",
                   }}
                 >
                   {step.number}
                 </span>
                 {step.hasDot && (
-                  <span className="absolute top-8 right-1/4 w-3 h-3 bg-[#4ade80] rounded-full"></span>
+                  <span className="absolute top-8 right-1/4 w-3 h-3 bg-[var(--section-accent,#4ade80)] rounded-full"></span>
                 )}
               </div>
 
@@ -69,7 +68,7 @@ export default function Process() {
               <h3 className="text-xl font-semibold mb-4">{step.title}</h3>
 
               {/* Description */}
-              <p className="text-white/60 text-sm leading-relaxed">
+              <p className="text-[var(--section-muted,rgba(255,255,255,0.6))] text-sm leading-relaxed">
                 {step.description}
               </p>
             </div>

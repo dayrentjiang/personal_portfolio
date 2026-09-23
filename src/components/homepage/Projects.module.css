@@ -1,0 +1,87 @@
+.section {
+  position: relative;
+  isolation: isolate;
+  min-height: 100svh;
+  padding: 100px 6.7% 64px;
+  background: var(--page-surface);
+  color: var(--page-ink);
+  font-family: var(--font-geist-sans), Arial, sans-serif;
+}
+
+.standalone { padding-top: 156px; }
+.backdrop {
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+  overflow: clip;
+  pointer-events: none;
+  mask-image: linear-gradient(to bottom, transparent, #000 260px, #000 calc(100% - 220px), transparent);
+}
+.globe { position: sticky; top: 0; width: 100%; height: 100svh; min-height: 600px; opacity: .5; }
+.section::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: linear-gradient(110deg, rgb(243 242 239 / 84%), rgb(243 242 239 / 25%) 75%);
+  pointer-events: none;
+}
+.content { max-width: 1216px; margin: 0 auto; }
+.header { display: flex; align-items: center; justify-content: space-between; gap: 28px; margin-bottom: 42px; }
+.heading { margin: 0; font-size: clamp(44px, 4.6vw, 66px); font-weight: 500; letter-spacing: -.065em; line-height: 1.05; }
+.heading > span { color: var(--page-accent); }
+.intro { margin: 19px 0 0; font-size: 14px; line-height: 1.65; color: #607482; }
+.allProjects { display: inline-flex; flex-shrink: 0; align-items: center; justify-content: center; gap: 20px; min-height: 44px; padding: 10px 19px; border: 1px solid #cbdde6; border-radius: 100px; background: rgb(255 255 255 / 55%); font-size: 12px; font-weight: 500; transition: background .2s, border-color .2s; }
+.allProjects svg, .contactLink svg { width: 16px; height: 16px; }
+.allProjects:hover { background: #fff; border-color: #8faabb; }
+.grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.card, .contactCard { position: relative; display: block; min-width: 0; aspect-ratio: 4 / 5; overflow: hidden; border-radius: 18px; }
+.card { background: #314c5b; color: #fff; box-shadow: 0 3px 8px rgb(37 65 82 / 4%); transition: transform .35s, box-shadow .35s; }
+.image { object-fit: cover; transition: transform .65s cubic-bezier(.2, .7, .2, 1); }
+.shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgb(9 22 31 / 16%) 0%, transparent 28%, rgb(9 22 31 / 12%) 42%, rgb(9 22 31 / 80%) 78%, #0e202d 100%); }
+.projectNumber { position: absolute; top: 23px; left: 24px; color: #fff; font-family: var(--font-geist-mono), monospace; font-size: 11px; letter-spacing: .04em; text-shadow: 0 1px 8px #000; }
+.cardArrow { position: absolute; top: 18px; right: 18px; display: grid; place-items: center; width: 34px; height: 34px; border: 1px solid rgb(255 255 255 / 38%); border-radius: 50%; background: rgb(17 37 50 / 24%); backdrop-filter: blur(10px); transition: color .25s, background .25s, transform .25s; }
+.cardArrow svg { width: 16px; height: 16px; }
+.cardContent { position: absolute; inset: auto 24px 25px; }
+.category { margin: 0 0 8px; color: #d4e0e6; font-size: 11px; letter-spacing: .01em; }
+.cardContent h3 { margin: 0; font-size: clamp(21px, 2vw, 28px); font-weight: 500; letter-spacing: -.04em; line-height: 1.15; }
+.summary { margin: 10px 0 16px; max-width: 290px; color: #d4e0e6; font-size: 12px; line-height: 1.55; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.tags li { padding: 5px 9px; border: 1px solid rgb(209 230 245 / 20%); border-radius: 100px; background: rgb(163 208 234 / 12%); color: #e2eff6; font-size: 10px; line-height: 1.2; }
+.card:hover { transform: translateY(-5px); box-shadow: 0 18px 36px rgb(37 65 82 / 14%); }
+.card:hover .image { transform: scale(1.045); }
+.card:hover .cardArrow { transform: rotate(45deg); background: #fff; color: #203747; }
+.section a:focus-visible { outline: 3px solid #356ec2; outline-offset: 5px; }
+.contactCard { display: flex; flex-direction: column; justify-content: space-between; padding: 26px; border: 1px solid var(--page-line); background: linear-gradient(145deg, rgb(255 255 255 / 65%), rgb(219 229 231 / 60%)); transition: border-color .25s, background .25s; }
+.contactSymbol { align-self: flex-end; margin: 8px 5px 0 0; color: #789dbd; font-size: 100px; font-weight: 300; line-height: 1; }
+.contactCard h3 { margin: 0; font-size: clamp(27px, 2.6vw, 36px); font-weight: 500; letter-spacing: -.055em; line-height: 1.12; }
+.contactCard p { margin: 15px 0 22px; color: #607482; font-size: 12px; line-height: 1.7; }
+.contactLink { display: inline-flex; align-items: center; gap: 40px; font-size: 13px; font-weight: 500; }
+.contactCard:hover { border-color: #7d9fb7; background: rgb(255 255 255 / 80%); }
+
+@media (max-width: 1000px) {
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+  .section { padding-top: 80px; }
+  .standalone { padding-top: 130px; }
+  .cardContent h3 { font-size: 27px; }
+  .contactCard h3 { font-size: 34px; }
+}
+
+@media (max-width: 600px) {
+  .section { padding: 70px 6% 42px; }
+  .standalone { padding-top: 120px; }
+  .header { align-items: flex-start; flex-direction: column; gap: 24px; margin-bottom: 28px; }
+  .heading { font-size: clamp(42px, 11vw, 60px); }
+  .intro { max-width: 290px; margin-top: 15px; font-size: 13px; }
+  .grid { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  .cardContent { inset: auto 22px 24px; }
+  .summary { font-size: 13px; }
+  .contactCard { min-height: 355px; aspect-ratio: auto; gap: 16px; }
+  .contactSymbol { position: absolute; right: 24px; top: 43px; font-size: 82px; }
+  .contactCard h3 { margin-top: 75px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card, .image, .cardArrow, .allProjects, .contactCard { transition: none; }
+  .card:hover, .card:hover .image, .card:hover .cardArrow { transform: none; }
+}

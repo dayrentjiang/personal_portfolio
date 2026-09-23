@@ -1,85 +1,69 @@
 import Image from "next/image";
 import Link from "next/link";
 import { projects } from "@/data/projects";
+import GlobeBackground from "./GlobeBackground";
+import styles from "./Projects.module.css";
 
-export default function Projects() {
+function Arrow() {
   return (
-    <section className="min-h-screen bg-[#0a0a0a] px-8 py-24">
-      <div className="max-w-6xl mx-auto">
-        {/* Header */}
-        <div className="flex justify-between items-start mb-12">
-          <p className="text-[#4ade80] text-sm">// Projects</p>
-          <h2 className="text-4xl md:text-5xl font-bold text-right max-w-md leading-tight">
-            Things I&apos;ve Built
-          </h2>
-        </div>
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M6 18 18 6M6 6h12v12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
 
-        {/* Decorative Line */}
-        <div className="flex items-center gap-2 mb-16">
-          <span className="text-[#4ade80]">&lt;/</span>
-          <div className="flex-1 h-px bg-white/20"></div>
-          <span className="text-[#4ade80]">&gt;</span>
-        </div>
+export default function Projects({ standalone = false }: { standalone?: boolean }) {
+  const Heading = standalone ? "h1" : "h2";
 
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          {projects.map((project) => (
-            <Link
-              key={project.slug}
-              href={`/projects/${project.slug}`}
-              className="group block"
-            >
-              {/* Project Image */}
-              <div className="relative aspect-[7/4] mb-6 overflow-hidden rounded-lg bg-[#1a1a1a]">
-                {project.image ? (
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center text-white/30">
-                    <span className="text-4xl">&#9654;</span>
-                  </div>
-                )}
-              </div>
+  return (
+    <section id="portfolio" className={`${styles.section} ${standalone ? styles.standalone : ""}`} aria-labelledby="portfolio-title">
+      <GlobeBackground />
+      <div className={styles.content}>
+        <header className={styles.header}>
+          <div>
+            <Heading id="portfolio-title" className={styles.heading}>My Portfolio<span>.</span></Heading>
+            <p className={styles.intro}>Real businesses. Thoughtful software. Built from the ground up.</p>
+          </div>
+          <Link className={styles.allProjects} href={standalone ? "/contact" : "/projects"}>
+            {standalone ? "Let’s build something" : "View All Projects"}<Arrow />
+          </Link>
+        </header>
 
-              {/* Project Info */}
-              <h3 className="text-xl font-semibold mb-3 group-hover:text-[#4ade80] transition-colors">
-                {project.title}
-              </h3>
-              <p className="text-white/60 text-sm leading-relaxed mb-4">
-                {project.description}
-              </p>
-
-              {/* Tags */}
-              <div className="flex flex-wrap gap-2">
-                {project.tags.map((tag, i) => (
-                  <span
-                    key={i}
-                    className="text-xs border border-white/20 rounded-full px-3 py-1 text-white/70"
-                  >
-                    {tag}
-                  </span>
-                ))}
+        <div className={styles.grid}>
+          {projects.map((project, index) => (
+            <Link key={project.slug} href={`/projects/${project.slug}`} className={styles.card} aria-label={`Explore ${project.title}`}>
+              <Image
+                src={project.image}
+                alt={`${project.title} project preview`}
+                fill
+                sizes="(max-width: 600px) 88vw, (max-width: 1000px) 43vw, (max-width: 1400px) 28vw, 390px"
+                className={styles.image}
+                style={{ objectPosition: project.thumbnailPosition ?? "center" }}
+              />
+              <div className={styles.shade} />
+              <span className={styles.projectNumber} aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+              <span className={styles.cardArrow}><Arrow /></span>
+              <div className={styles.cardContent}>
+                <p className={styles.category}>{project.category}</p>
+                <h3>{project.title}</h3>
+                <p className={styles.summary}>{project.summary}</p>
+                <ul className={styles.tags} aria-label="Technologies">
+                  {project.tags.slice(0, 3).map((tag) => <li key={tag}>{tag}</li>)}
+                </ul>
               </div>
             </Link>
           ))}
+
+          <Link href="/contact" className={styles.contactCard}>
+            <span className={styles.contactSymbol} aria-hidden="true">✳</span>
+            <div>
+              <h3>Your idea.<br />Our next build.</h3>
+              <p>Have a challenge worth solving?<br />Let&apos;s make something that matters.</p>
+              <span className={styles.contactLink}>Let&apos;s talk <Arrow /></span>
+            </div>
+          </Link>
         </div>
 
-        {/* View More Button */}
-        <div className="flex flex-col items-center mt-16 gap-4">
-          <Link
-            href="/projects"
-            className="bg-[#4ade80] text-black font-medium px-8 py-3 rounded-full hover:bg-[#3fcf70] transition-colors"
-          >
-            View More Projects
-          </Link>
-          <p className="text-white/40 text-sm">
-            + internal systems not shown here
-          </p>
-        </div>
       </div>
     </section>
   );

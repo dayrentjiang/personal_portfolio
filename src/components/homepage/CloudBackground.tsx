@@ -48,10 +48,10 @@ export default function CloudBackground() {
           scale: Math.max(1, window.devicePixelRatio || 1),
           scaleMobile: 2,
           texturePath: "/vanta-noise.png",
-          backgroundColor: 0xf6f1eb,
-          skyColor: 0xe6d8ca,
-          cloudColor: 0x9f8e80,
-          lightColor: 0xfff9ef,
+          backgroundColor: 0xf3f2ef,
+          skyColor: 0xe5e2dc,
+          cloudColor: 0xa9a7a1,
+          lightColor: 0xfaf8f2,
           speed: 0.35,
         });
         container.dataset.clouds = "ready";

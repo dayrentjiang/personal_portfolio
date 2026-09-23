@@ -4,6 +4,9 @@ export interface Project {
   description: string;
   image: string;
   tags: string[];
+  category: string;
+  summary: string;
+  thumbnailPosition?: string;
   // Detailed content for individual project page
   details: {
     overview: string;
@@ -21,6 +24,8 @@ export const projects: Project[] = [
   {
     slug: "deepway",
     title: "Deepway",
+    category: "Web Development · Electric Mobility",
+    summary: "A digital home for the next generation of transport.",
     description:
       "Website for an Australian electric truck manufacturer. Clean, modern design showcasing their vehicles and vision for sustainable transport.",
     image: "/deepway.jpeg",
@@ -42,6 +47,9 @@ export const projects: Project[] = [
   {
     slug: "enroute",
     title: "Enroute",
+    category: "Full Stack · Automotive Platform",
+    summary: "Connecting workshops, drivers, and everything in between.",
+    thumbnailPosition: "75% center",
     description:
       "Full system for a platform connecting automotive workshops, logistics, drivers, and mechanics. Built with a team, end to end.",
     image: "/enroute.jpeg",
@@ -64,6 +72,8 @@ export const projects: Project[] = [
   {
     slug: "keepitreelcam",
     title: "KeepIt Reel",
+    category: "Product Development · Sports Tech",
+    summary: "One button. Your best moments, captured.",
     description:
       "Instant replay device system that lets athletes capture their best moments in 1080p HD. @keepitreelcam on Instagram",
     image: "/keepitreel.png",
@@ -86,6 +96,8 @@ export const projects: Project[] = [
   {
     slug: "asg",
     title: "ASG Automotive",
+    category: "Web Development · Automotive",
+    summary: "Helping a truck dealership put its best foot forward.",
     description:
       "Website for Australia's leading Sitrak truck dealership. Showcases their vehicle range, services, and financing options.",
     image: "/asg.png",
@@ -107,6 +119,8 @@ export const projects: Project[] = [
   {
     slug: "smart-trashcan",
     title: "Smart AI Trashcan",
+    category: "Hardware · Embedded Systems",
+    summary: "A smarter way to sort everyday waste.",
     description:
       "A trashcan that automatically sorts your waste when you throw it in. Built with Arduino, Raspberry Pi, and sensors for a uni project.",
     image: "/smarttrash.png",
