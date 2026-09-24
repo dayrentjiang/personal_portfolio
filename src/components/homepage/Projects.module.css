@@ -23,7 +23,7 @@
   position: absolute;
   z-index: -1;
   inset: 0;
-  background: linear-gradient(110deg, rgb(243 242 239 / 84%), rgb(243 242 239 / 25%) 75%);
+  background: linear-gradient(110deg, rgb(255 255 255 / 84%), rgb(255 255 255 / 25%) 75%);
   pointer-events: none;
 }
 .content { max-width: 1216px; margin: 0 auto; }

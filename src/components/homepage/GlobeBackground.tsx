@@ -47,7 +47,7 @@ export default function GlobeBackground() {
           minWidth: 200,
           scale: Math.max(1, window.devicePixelRatio || 1),
           scaleMobile: 2,
-          backgroundColor: 0xf3f2ef,
+          backgroundColor: 0xffffff,
           color: 0x9cbbc9,
           color2: 0x7998ad,
           size: 0.95,

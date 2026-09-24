@@ -1,5 +1,5 @@
 .section {
-  --surface-wash: linear-gradient(90deg, rgb(243 242 239 / 80%), rgb(243 242 239 / 58%) 60%, rgb(243 242 239 / 38%));
+  --surface-wash: linear-gradient(90deg, rgb(255 255 255 / 80%), rgb(255 255 255 / 58%) 60%, rgb(255 255 255 / 38%));
   position: relative;
   isolation: isolate;
   overflow: hidden;
@@ -28,7 +28,7 @@
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: radial-gradient(ellipse at 85% 0%, #77756f 0%, #bdbab3 40%, #eeece7 76%, var(--page-surface) 100%);
+  background: radial-gradient(ellipse at 85% 0%, #777777 0%, #bdbdbd 40%, #eeeeee 76%, var(--page-surface) 100%);
   pointer-events: none;
 }
 
@@ -77,7 +77,7 @@
   padding: 7px 12px;
   border: 1px solid rgb(101 113 118 / 18%);
   border-radius: 999px;
-  background: rgb(243 242 239 / 22%);
+  background: rgb(255 255 255 / 22%);
   color: #576365;
   font-size: 12px;
   line-height: 1.4;
@@ -162,7 +162,7 @@
 }
 
 @media (max-width: 760px) {
-  .section { padding: 40px 0 80px; --surface-wash: rgb(243 242 239 / 86%); }
+  .section { padding: 40px 0 80px; --surface-wash: rgb(255 255 255 / 86%); }
   .content { width: 88%; }
   .overview { --orb-space: 0px; min-height: 0; }
   .heading { max-width: none; line-height: 1.1; letter-spacing: -.04em; }
