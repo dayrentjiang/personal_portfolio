@@ -18,6 +18,8 @@
   padding: clamp(24px, 4svh, 48px) max(5%, calc((100% - 1280px) / 2));
   overflow: hidden;
 }
+.section[data-complete="true"] { height: auto; }
+.section[data-complete="true"] .stage { position: relative; top: auto; }
 .wind { position: absolute; z-index: -1; inset: 0; overflow: hidden; pointer-events: none; opacity: .4; mask-image: linear-gradient(transparent, #000 6%, #000 94%, transparent); }
 .windWash { position: absolute; left: -90%; top: 8%; width: 90%; height: 38%; border-radius: 50%; background: radial-gradient(ellipse, rgb(235 134 13 / 36%), rgb(185 133 97 / 16%) 48%, transparent 75%); filter: blur(38px); animation: windWash 16s linear infinite; animation-delay: -6s; animation-play-state: paused; }
 .windWashSecond { top: 55%; animation-duration: 20s; animation-delay: -12s; background: radial-gradient(ellipse, rgb(223 143 145 / 40%), rgb(226 144 156 / 18%) 48%, transparent 75%); }

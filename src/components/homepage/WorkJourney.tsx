@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState, useSyncExternalStore, type CSSProperties } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState, useSyncExternalStore, type CSSProperties } from "react";
 import Image from "next/image";
 import { journeyStops } from "@/data/work-journey";
 import JourneyScene from "./JourneyScene";
@@ -18,9 +18,20 @@ export default function WorkJourney() {
   const sectionRef = useRef<HTMLElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
   const progressRef = useRef(0);
+  const completedRef = useRef(false);
+  const completionScrollRef = useRef<number | null>(null);
+  const [completed, setCompleted] = useState(false);
   const [active, setActive] = useState(0);
   const reducedMotion = useSyncExternalStore(subscribeMotion, () => window.matchMedia(motionQuery).matches, () => false);
   const stop = journeyStops[active];
+
+  useLayoutEffect(() => {
+    if (completed && completionScrollRef.current !== null) {
+      // Removing the long scroll track must keep the visible stage in place.
+      window.scrollTo({ top: completionScrollRef.current, behavior: "instant" });
+      completionScrollRef.current = null;
+    }
+  }, [completed]);
 
   useEffect(() => {
     const stage = stageRef.current;
@@ -37,10 +48,11 @@ export default function WorkJourney() {
   }, []);
 
   useEffect(() => {
-    if (reducedMotion) return;
+    if (reducedMotion || completed) return;
     let frame = 0;
     const update = () => {
       frame = 0;
+      if (completedRef.current) return;
       const section = sectionRef.current;
       const stage = stageRef.current;
       if (!section || !stage) return;
@@ -52,6 +64,11 @@ export default function WorkJourney() {
       progressRef.current = progress;
       section.style.setProperty("--journey-progress", String(progress));
       setActive(Math.min(journeyStops.length - 1, Math.round(progress * (journeyStops.length - 1))));
+      if (progress === 1) {
+        completedRef.current = true;
+        completionScrollRef.current = window.scrollY - (stage.getBoundingClientRect().top - rect.top);
+        setCompleted(true);
+      }
     };
     const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
     schedule();
@@ -65,15 +82,16 @@ export default function WorkJourney() {
       window.removeEventListener("scroll", schedule);
       window.removeEventListener("resize", schedule);
     };
-  }, [reducedMotion]);
+  }, [reducedMotion, completed]);
 
   const goTo = useCallback((index: number) => {
     const section = sectionRef.current;
     const stage = stageRef.current;
     if (!section || !stage) return;
     const progress = index / Math.max(1, journeyStops.length - 1);
-    if (window.matchMedia(motionQuery).matches) {
+    if (completedRef.current || window.matchMedia(motionQuery).matches) {
       progressRef.current = progress;
+      section.style.setProperty("--journey-progress", String(progress));
       setActive(index);
       return;
     }
@@ -84,7 +102,7 @@ export default function WorkJourney() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="journey" className={styles.section} aria-labelledby="journey-title" style={{ "--journey-stop-count": journeyStops.length } as CSSProperties}>
+    <section ref={sectionRef} id="journey" className={styles.section} data-complete={completed} aria-labelledby="journey-title" style={{ "--journey-stop-count": journeyStops.length } as CSSProperties}>
       <div ref={stageRef} className={styles.stage}>
         <div className={styles.wind} aria-hidden="true">
           <div className={styles.windWash} />
@@ -104,7 +122,7 @@ export default function WorkJourney() {
         <div className={styles.layout}>
           <div className={styles.world}>
             <JourneyScene progressRef={progressRef} active={active} onSelect={goTo} />
-            <div className={styles.sceneNote}><span aria-hidden="true" /> {reducedMotion ? "Choose a stop to explore." : "Scroll to drive. Choose a stop to explore."}</div>
+            <div className={styles.sceneNote}><span aria-hidden="true" /> {reducedMotion || completed ? "Choose a stop to explore." : "Scroll to drive. Choose a stop to explore."}</div>
           </div>
           <div className={styles.details} aria-live="polite" aria-atomic="true">
             <article key={stop.id} className={styles.detailCard}>
