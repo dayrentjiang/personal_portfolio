@@ -1,5 +1,15 @@
 # Keep It Reel portfolio thumbnail
 
+Current asset: `public/projects/keep-it-reel-thumbnail-v2.png`.
+Updated from the live site's overhead clay-court tennis hero on 28 September 2026. Both the browser and phone screens use the updated scene. Built-in image generation edit mode.
+Source image: https://www.keepitreelcam.com/court-editorial.jpg
+
+## Current edit prompt
+
+Precise compositing edit. Image 1 is the existing Keep It Reel portfolio thumbnail and is the edit target. Image 2 is the actual replacement hero photograph from the updated website. Change ONLY the court imagery within the large website browser screen and the phone replay screen: replace the old fenced padel court scene in both with the overhead tennis serve photograph from image 2, faithfully preserving its player in light blue shirt, orange clay, white court lines, diagonal shadows, racket and ball. Crop to each screen naturally while keeping the serving player visible. Preserve all other elements of image 1 exactly: 4:5 portrait canvas, ivory studio background, soft shadows, browser and phone geometry/placement, silver frames, keepitreel wordmark and icon, all header typography 'Your game. On replay.', navigation, orange buttons, 'Your court. Your highlights.' overlay, phone 45s badge and replay controls. No new interface sections or text. Keep bottom blank ivory area. This is the same thumbnail updated to the website's new hero, not a redesigned composition.
+
+## Original version
+
 Asset: `/projects/keep-it-reel-thumbnail.png`.
 Generated with the built-in image generation tool using the supplied portfolio card and a screenshot of the live Keep It Reel homepage as references.
 Source: https://www.keepitreelcam.com/
