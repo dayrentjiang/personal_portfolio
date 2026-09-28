@@ -38,7 +38,7 @@ export const journeyStops: JourneyStop[] = [
     id: "lifeblood", name: "Australian Red Cross Lifeblood", shortName: "Lifeblood", mark: "L",
     dates: "Feb 2026 – Jul 2026", year: "2026", type: "Industry placement",
     role: "Application Developer",
-    description: "Built Rhonda, an AI regulatory assistant, from proof of concept to MVP alongside Regulatory, Cybersecurity, and ICT teams.",
+    description: "Built an AI regulatory assistant, from proof of concept to MVP alongside Regulatory, Cybersecurity, and ICT teams.",
     highlight: "An AI assistant designed for a 20-person regulatory team",
     tools: ["React", "LLMs & retrieval", "Azure & Terraform"],
   },

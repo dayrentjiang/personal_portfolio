@@ -66,16 +66,16 @@ export const projects: Project[] = [
     },
   },
   {
-    slug: "lifeblood-rag",
-    title: "Lifeblood RAG",
+    slug: "regulatory-rag",
+    title: "Regulatory RAG system for an enterprise company",
     category: "AI · Regulatory knowledge",
     summary: "50+ documents. One place to ask.",
-    description: "A regulatory knowledge assistant built with Australian Red Cross Lifeblood, helping users ask questions across a knowledge base of more than 50 regulatory documents.",
-    image: "/projects/lifeblood-rag-thumbnail.png",
+    description: "A regulatory knowledge assistant built for an enterprise company, helping users ask questions across a knowledge base of more than 50 regulatory documents.",
+    image: "/projects/regulatory-rag-thumbnail.png",
     imageCaption: "Concept preview — an illustrative interface created for this portfolio, using sample content.",
     tags: ["RAG", "Knowledge retrieval", "50+ documents"],
     details: {
-      overview: "I built Rhonda, an AI regulatory assistant, with Australian Red Cross Lifeblood. The project brings more than 50 regulatory documents into a searchable knowledge base. Users ask a question in plain language, and the system uses retrieval-augmented generation (RAG) to find relevant material and use it as context for a response. The goal is to make regulatory information easier to find without manually searching through each document.",
+      overview: "I built a regulatory RAG system for an enterprise company. The project brings more than 50 regulatory documents into a searchable knowledge base. Users ask a question in plain language, and the system uses retrieval-augmented generation (RAG) to find relevant material and use it as context for a response. The goal is to make regulatory information easier to find without manually searching through each document.",
       features: [
         "Ask regulatory questions in natural language.",
         "Search a knowledge base of more than 50 regulatory documents.",

@@ -3,7 +3,7 @@ import Projects from "@/components/homepage/Projects";
 
 export const metadata: Metadata = {
   title: "Projects | Dayrent Tjiang",
-  description: "Selected projects by Dayrent Tjiang: Keep It Reel sports replay, Enroute Workshop management software, and a Lifeblood regulatory knowledge assistant.",
+  description: "Selected projects by Dayrent Tjiang: Keep It Reel sports replay, Enroute Workshop management software, and an enterprise regulatory RAG system.",
 };
 
 export default function ProjectsPage() {
