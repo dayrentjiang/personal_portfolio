@@ -67,7 +67,7 @@ export const projects: Project[] = [
   },
   {
     slug: "regulatory-rag",
-    title: "Regulatory RAG system for an enterprise company",
+    title: "Regulatory RAG",
     category: "AI · Regulatory knowledge",
     summary: "50+ documents. One place to ask.",
     description: "A regulatory knowledge assistant built for an enterprise company, helping users ask questions across a knowledge base of more than 50 regulatory documents.",
