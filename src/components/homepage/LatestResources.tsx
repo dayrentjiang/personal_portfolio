@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { connection } from "next/server";
 import { Suspense } from "react";
 import { getResources, resourceKinds } from "@/lib/library";
 import { live } from "@/sanity/live";
@@ -6,6 +7,8 @@ import ResourceCard, { LibraryCategoryCard } from "@/components/library/Resource
 import styles from "./LatestResources.module.css";
 
 export default async function LatestResources() {
+  // The homepage must also see resources published after the deployment was built.
+  await connection();
   let resources;
   try {
     resources = (await getResources()).slice(0, 3);
