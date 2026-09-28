@@ -3,7 +3,7 @@ import Projects from "@/components/homepage/Projects";
 
 export const metadata: Metadata = {
   title: "Projects | Dayrent Tjiang",
-  description: "A selection of work by Dayrent Tjiang. Project details coming soon.",
+  description: "Selected projects by Dayrent Tjiang, including Keep It Reel, a courtside sports replay product.",
 };
 
 export default function ProjectsPage() {

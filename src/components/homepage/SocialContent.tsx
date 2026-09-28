@@ -98,12 +98,13 @@ export default function SocialContent() {
               style={{ "--offset": offset } as CSSProperties}
               data-active={isActive}
               data-tone={index % 4}
+              data-image-fit={post.imageFit}
               role="group"
               aria-roledescription="slide"
               aria-label={`${index + 1} of ${posts.length}: ${post.title}`}
             >
               {post.thumbnail ? (
-                <Image src={post.thumbnail} alt="" fill sizes="(max-width: 600px) 72vw, 300px" className={styles.image} unoptimized={post.thumbnail.startsWith("https://")} />
+                <Image src={post.thumbnail} alt={post.alt ?? ""} fill sizes="(max-width: 600px) 72vw, 300px" className={styles.image} unoptimized={post.thumbnail.startsWith("https://")} />
               ) : (
                 <div className={styles.artwork} aria-hidden="true">
                   <span className={styles.orbit} />

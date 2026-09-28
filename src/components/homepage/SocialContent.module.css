@@ -60,6 +60,8 @@
 @keyframes borderOrbit { to { --moment-border-angle: 360deg; } }
 .section[data-paused="true"] .active::after { animation-play-state: paused; }
 .image { object-fit: cover; object-position: center; }
+.card[data-image-fit="contain"] { background: #f0f0f0; }
+.card[data-image-fit="contain"] .image { object-fit: contain; object-position: center 25%; }
 .shade { position: absolute; inset: 0; background: linear-gradient(transparent 35%, rgb(24 35 37 / 18%) 55%, rgb(24 35 37 / 80%)); pointer-events: none; }
 .artwork { position: absolute; inset: 0; display: grid; place-items: center; background: radial-gradient(circle at 20% 15%, rgb(255 255 255 / 45%), transparent 60%); }
 .orbit { position: absolute; width: 140%; aspect-ratio: 1; border: 1px solid rgb(255 255 255 / 32%); border-radius: 50%; box-shadow: 0 0 0 32px rgb(255 255 255 / 8%), 0 0 0 64px rgb(255 255 255 / 6%); transform: rotate(-25deg) scaleX(.65); }

@@ -61,9 +61,6 @@ export default function Projects({ standalone = false }: { standalone?: boolean 
                 <p className={styles.category}>{project.category}</p>
                 <h3>{project.title}</h3>
                 <p className={styles.summary}>{project.summary}</p>
-                <ul className={styles.tags} aria-label="Technologies">
-                  {project.tags.slice(0, 3).map((tag) => <li key={tag}>{tag}</li>)}
-                </ul>
               </div>
             </Link>
           ))}

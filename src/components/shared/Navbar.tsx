@@ -38,7 +38,7 @@ export default function Navbar() {
 
   return (
     <>
-      <header className={`site-header ${pathname === "/" || pathname === "/projects" || pathname.startsWith("/library") ? "site-header-light" : "site-header-dark"}`}>
+      <header className={`site-header ${pathname === "/" || pathname === "/projects" || pathname.startsWith("/projects/") || pathname.startsWith("/library") ? "site-header-light" : "site-header-dark"}`}>
         <Link href="/" className="site-brand" aria-label="Dayrent Tjiang home">
           <BrandMark /><span>Dayrent Tjiang</span>
         </Link>

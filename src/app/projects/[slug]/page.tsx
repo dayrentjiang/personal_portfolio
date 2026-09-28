@@ -1,179 +1,66 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getProjectBySlug, projects } from "@/data/projects";
+import styles from "./project.module.css";
 
 interface ProjectPageProps {
   params: Promise<{ slug: string }>;
 }
 
 export function generateStaticParams() {
-  return projects.map((project) => ({
-    slug: project.slug,
-  }));
+  return projects.map((project) => ({ slug: project.slug }));
+}
+
+export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
+  const project = getProjectBySlug((await params).slug);
+  if (!project) return { title: "Project not found | Dayrent Tjiang" };
+  return {
+    title: `${project.title} | Dayrent Tjiang`,
+    description: project.description,
+    alternates: { canonical: `/projects/${project.slug}` },
+    openGraph: { title: project.title, description: project.description, images: [project.image] },
+  };
 }
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
-  const { slug } = await params;
-  const project = getProjectBySlug(slug);
-
-  if (!project) {
-    notFound();
-  }
+  const project = getProjectBySlug((await params).slug);
+  if (!project) notFound();
 
   return (
-    <main className="min-h-screen bg-[#0a0a0a] px-8 py-24">
-      <div className="max-w-4xl mx-auto pt-16">
-        {/* Back Link */}
-        <Link
-          href="/#portfolio"
-          className="text-[#4ade80] text-sm hover:underline mb-8 inline-block"
-        >
-          &larr; Back to Projects
-        </Link>
-
-        {/* Header */}
-        <h1 className="text-5xl font-bold mb-4">{project.title}</h1>
-        <p className="text-white/60 text-lg mb-8">{project.description}</p>
-
-        {/* Tags */}
-        <div className="flex flex-wrap gap-2 mb-12">
-          {project.tags.map((tag, i) => (
-            <span
-              key={i}
-              className="text-sm border border-white/20 rounded-full px-4 py-1 text-white/70"
-            >
-              {tag}
-            </span>
-          ))}
+    <main className={`portfolio-page ${styles.page}`}>
+      <div className={styles.wrap}>
+        <Link href="/projects" className={styles.back}>← All projects</Link>
+        <div className={styles.hero}>
+          <header>
+            <p className={styles.eyebrow}>{project.category}</p>
+            <h1>{project.title}</h1>
+            <p className={styles.description}>{project.description}</p>
+            <ul className={styles.tags} aria-label="Technologies">
+              {project.tags.map((tag) => <li key={tag}>{tag}</li>)}
+            </ul>
+            <div className={styles.links}>
+              {project.details.liveUrl && <a href={project.details.liveUrl} target="_blank" rel="noopener noreferrer">Visit website <span aria-hidden="true">↗</span></a>}
+              {project.details.githubUrl && <a href={project.details.githubUrl} target="_blank" rel="noopener noreferrer">GitHub ↗</a>}
+              {project.details.videoUrl && <a href={project.details.videoUrl} target="_blank" rel="noopener noreferrer">Watch demo ↗</a>}
+            </div>
+          </header>
+          <Image className={styles.image} src={project.image} alt={`${project.title} website and mobile replay concept`} width={1122} height={1402} sizes="(max-width: 760px) 88vw, 440px" />
         </div>
-
-        {/* Main Image */}
-        {project.image && (
-          <div className="relative aspect-video mb-12 rounded-lg overflow-hidden bg-[#1a1a1a]">
-            <Image
-              src={project.image}
-              alt={project.title}
-              fill
-              className="object-cover"
-            />
-          </div>
-        )}
-
-        {/* Links Table (for projects with video/external links but no image) */}
-        {!project.image && (project.details.videoUrl || project.details.liveUrl || project.details.githubUrl) && (
-          <div className="mb-12 border border-white/10 rounded-lg overflow-hidden">
-            <table className="w-full">
-              <tbody>
-                {project.details.videoUrl && (
-                  <tr className="border-b border-white/10">
-                    <td className="px-6 py-4 text-white/50 w-32">Demo</td>
-                    <td className="px-6 py-4">
-                      <a
-                        href={project.details.videoUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-[#4ade80] hover:underline"
-                      >
-                        Watch on YouTube &rarr;
-                      </a>
-                    </td>
-                  </tr>
-                )}
-                {project.details.liveUrl && (
-                  <tr className="border-b border-white/10">
-                    <td className="px-6 py-4 text-white/50 w-32">Live</td>
-                    <td className="px-6 py-4">
-                      <a
-                        href={project.details.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-[#4ade80] hover:underline"
-                      >
-                        {project.details.liveUrl} &rarr;
-                      </a>
-                    </td>
-                  </tr>
-                )}
-                {project.details.githubUrl && (
-                  <tr>
-                    <td className="px-6 py-4 text-white/50 w-32">Source</td>
-                    <td className="px-6 py-4">
-                      <a
-                        href={project.details.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-[#4ade80] hover:underline"
-                      >
-                        View on GitHub &rarr;
-                      </a>
-                    </td>
-                  </tr>
-                )}
-              </tbody>
-            </table>
-          </div>
-        )}
-
-        {/* Overview */}
-        <section className="mb-12">
-          <h2 className="text-2xl font-semibold mb-4">Overview</h2>
-          <p className="text-white/70 leading-relaxed">
-            {project.details.overview}
-          </p>
-        </section>
-
-        {/* Features */}
-        <section className="mb-12">
-          <h2 className="text-2xl font-semibold mb-4">Features</h2>
-          <ul className="space-y-2">
-            {project.details.features.map((feature, i) => (
-              <li key={i} className="text-white/70 flex items-center gap-3">
-                <span className="text-[#4ade80]">&#10003;</span>
-                {feature}
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        {/* Tech Stack */}
-        <section className="mb-12">
-          <h2 className="text-2xl font-semibold mb-4">Tech Stack</h2>
-          <div className="flex flex-wrap gap-3">
-            {project.details.techStack.map((tech, i) => (
-              <span
-                key={i}
-                className="bg-white/10 px-4 py-2 rounded-lg text-sm"
-              >
-                {tech}
-              </span>
-            ))}
-          </div>
-        </section>
-
-        {/* Links */}
-        <section className="flex gap-4">
-          {project.details.liveUrl && (
-            <a
-              href={project.details.liveUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-[#4ade80] text-black font-medium px-6 py-3 rounded-full hover:bg-[#3fcf70] transition-colors"
-            >
-              View Live
-            </a>
-          )}
-          {project.details.githubUrl && (
-            <a
-              href={project.details.githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="border border-white/20 px-6 py-3 rounded-full hover:bg-white/5 transition-colors"
-            >
-              GitHub
-            </a>
-          )}
-        </section>
+        <div className={styles.details}>
+          <section>
+            <p className={styles.eyebrow}>The project</p>
+            <h2>Overview</h2>
+            <p>{project.details.overview}</p>
+          </section>
+          <section>
+            <h2>What it does</h2>
+            <ul className={styles.features}>{project.details.features.map((feature) => <li key={feature}>{feature}</li>)}</ul>
+            <h3>Built with</h3>
+            <ul className={styles.tags} aria-label="Tech stack">{project.details.techStack.map((tech) => <li key={tech}>{tech}</li>)}</ul>
+          </section>
+        </div>
       </div>
     </main>
   );
