@@ -20,6 +20,10 @@
 .features { margin: 0; padding-left: 18px; }
 .features li { padding-left: 6px; margin-bottom: 10px; }
 .features li::marker { color: #ab755b; }
+.film { margin-top: 64px; padding-top: 40px; border-top: 1px solid var(--page-line); scroll-margin-top: 110px; }
+.film h2 { margin: 0 0 24px; font-size: clamp(28px, 4vw, 40px); font-weight: 500; letter-spacing: -.045em; }
+.film video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; border: 1px solid var(--page-line); border-radius: 20px; background: #f3f4f5; }
+.film video:focus-visible { outline: 2px solid var(--page-accent); outline-offset: 5px; }
 @media (max-width: 760px) {
   .page { padding: 112px 6% 64px; }
   .back { margin-bottom: 32px; }

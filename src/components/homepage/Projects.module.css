@@ -49,7 +49,7 @@
 .placeholderContent p { margin: 8px 0 0; color: var(--page-muted); font-size: 13px; }
 .card { border: 1px solid var(--page-line); background: #f6f5f1; color: var(--page-ink); box-shadow: 0 3px 8px rgb(37 65 82 / 4%); transition: transform .35s, box-shadow .35s; }
 .image { object-fit: cover; transition: transform .65s cubic-bezier(.2, .7, .2, 1); }
-.shade { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 65%, rgb(246 245 241 / 50%) 76%, #f6f5f1 87%); }
+.shade { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 58%, rgb(246 245 241 / 65%) 72%, #f6f5f1 80%); }
 .projectNumber { position: absolute; top: 23px; left: 24px; color: var(--page-muted); font-family: var(--font-geist-mono), monospace; font-size: 11px; letter-spacing: .04em; }
 .cardArrow { position: absolute; top: 18px; right: 18px; display: grid; place-items: center; width: 34px; height: 34px; border: 1px solid var(--page-line); border-radius: 50%; background: rgb(255 255 255 / 70%); backdrop-filter: blur(10px); transition: color .25s, background .25s, transform .25s; }
 .cardArrow svg { width: 16px; height: 16px; }

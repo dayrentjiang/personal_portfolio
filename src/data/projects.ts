@@ -15,6 +15,7 @@ export interface Project {
     liveUrl?: string;
     githubUrl?: string;
     videoUrl?: string;
+    video?: { src: string; poster: string };
     instagramUrl?: string;
     images: string[];
   };
@@ -39,6 +40,27 @@ export const projects: Project[] = [
       ],
       techStack: ["Python", "FastAPI", "Linux", "AWS"],
       liveUrl: "https://www.keepitreelcam.com/",
+      images: [],
+    },
+  },
+  {
+    slug: "enroute-workshop",
+    title: "Enroute Workshop",
+    category: "Workshop management",
+    summary: "Keep the workshop moving.",
+    description: "A connected workspace for workshop teams to plan bookings, manage work orders, and keep daily operations moving.",
+    image: "/projects/enroute-workshop-thumbnail.png",
+    tags: ["Scheduling", "Work orders", "Operations"],
+    details: {
+      overview: "Enroute Workshop brings the workshop diary, work orders, customers, vehicles, and inventory into one workspace. My work at Enroute Tech focuses on turning paper-based transport and workshop processes into connected digital operations, giving teams a clearer view of what needs doing and who is working on it.",
+      features: [
+        "Plan bookings and jobs with daily, weekly, and monthly workshop diary views.",
+        "Track work orders from booking through to completion with status filters and worker assignments.",
+        "Find jobs by work order, vehicle, customer, purchase order, or notes.",
+        "Bring customer and vehicle records, inventory, invoices, and service schedules into the same workspace.",
+      ],
+      techStack: [],
+      video: { src: "/projects/enroute-workshop-launch.mp4", poster: "/projects/enroute-workshop-launch-poster.webp" },
       images: [],
     },
   },
