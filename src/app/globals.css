@@ -48,6 +48,26 @@ body:has(.portfolio-page) .site-footer {
   mask-image: linear-gradient(transparent, #000 35%, #000 70%, transparent);
 }
 
+body:has(.library-page) .site-footer {
+  --section-surface: #faf9f7;
+  --section-ink: #293234;
+  --section-muted: #657176;
+  --section-accent: #8b4c33;
+  --section-accent-hover: #753c27;
+  --section-line: #d9dbd5;
+  --section-button-ink: #fff;
+  color: var(--section-ink);
+  font-family: var(--font-geist-sans), Arial, sans-serif;
+}
+body:has(.library-page) .site-footer-glow { display: none; }
+body:has(.studio-root, .studio-setup) > .site-header,
+body:has(.studio-root, .studio-setup) > .site-footer { display: none; }
+.studio-root { position: fixed; inset: 0; z-index: 60; background: #fff; color: #171c1d; }
+.studio-setup { min-height: 100vh; padding: 80px 8%; background: #f8f7f3; color: #293234; }
+.studio-setup h1 { font-size: 32px; margin-bottom: 24px; }
+.studio-setup p { margin: 16px 0; }
+.studio-setup a { text-decoration: underline; }
+
 @keyframes marquee {
   0% {
     transform: translateX(0%);

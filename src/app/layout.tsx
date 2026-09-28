@@ -14,7 +14,12 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim()
+  || process.env.VERCEL_PROJECT_PRODUCTION_URL?.trim()
+  || "http://localhost:3000";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(/^https?:\/\//i.test(siteUrl) ? siteUrl : `https://${siteUrl}`),
   title: "Dayrent Tjiang | Full Stack Developer",
   description: "Personal portfolio of Dayrent Tjiang",
   icons: {

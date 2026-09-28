@@ -1,5 +1,10 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Library CMS
+
+The Library uses Sanity for articles, prompts, and downloadable skills. See
+[the setup and publishing guide](docs/library-cms.md) to connect your project and use `/studio`.
+
 ## Getting Started
 
 First, run the development server:

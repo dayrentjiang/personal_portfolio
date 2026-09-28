@@ -5,6 +5,8 @@ import Services from "@/components/homepage/Services";
 import PortfolioTransition from "@/components/homepage/PortfolioTransition";
 import SocialContent from "@/components/homepage/SocialContent";
 import WorkJourney from "@/components/homepage/WorkJourney";
+import LatestResources from "@/components/homepage/LatestResources";
+import { Suspense } from "react";
 
 export default function Home() {
   return (
@@ -14,6 +16,7 @@ export default function Home() {
         <Introduction />
         <Projects />
       </PortfolioTransition>
+      <Suspense><LatestResources /></Suspense>
       <SocialContent />
       <WorkJourney />
       <Services />

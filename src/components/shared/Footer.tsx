@@ -1,4 +1,4 @@
-const quickLinks = ["HOME", "ABOUT", "PROJECTS", "CONTACT"];
+const quickLinks = ["HOME", "ABOUT", "PROJECTS", "LIBRARY", "CONTACT"];
 const socialLinks = [
   { name: "GITHUB", url: "https://github.com/dayrentjiang" },
   { name: "LINKEDIN", url: "https://linkedin.com/in/dayrent-tjiang" },

@@ -1,0 +1,622 @@
+{
+  "_createdAt": "2026-09-28T00:43:22Z",
+  "_id": "drafts.87651e19-278e-4d38-84f9-264832f348f2",
+  "_rev": "aaa690c2-f2bc-4b04-b97e-c8996caa550c",
+  "_type": "article",
+  "_updatedAt": "2026-09-28T00:51:25Z",
+  "body": [
+    {
+      "_key": "8b1a9bb8f855",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "6cac470344b0",
+          "_type": "span",
+          "marks": [],
+          "text": "A building rises floor by floor as you scroll. A product opens to reveal its parts. A gadget assembles itself, then holds on the finished design. These are useful ways to show how something fits together on a website."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "702e2a458357",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "b1296632c5b3",
+          "_type": "span",
+          "marks": [],
+          "text": "The workflow in this guide starts with one picture. You use an AI image tool to plan five stages of a transformation, then give those references to an AI coding tool to build the animation. Anime.js controls its timing and scroll progress."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "2b89cbff88c1",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "93603a7e00cd",
+          "_type": "span",
+          "marks": [],
+          "text": "There are three parts: make the pictures, build the animation, and refine the result. The prompts below give you a starting point for each one."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "41af8c6eaed0",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "f17595d27d2d",
+          "_type": "span",
+          "marks": [],
+          "text": "What you need before you start"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "247c916932a4",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "1e62fde807d2",
+          "_type": "span",
+          "marks": [],
+          "text": "One clear picture of the object you want to animate: a building, product, gadget, or another object with recognisable parts."
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "20b6fda6007b",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "b99eb4690cc7",
+          "_type": "span",
+          "marks": [],
+          "text": "An AI image tool that accepts a reference picture."
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "266e10f49bf0",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "655cf09e3a9c",
+          "_type": "span",
+          "marks": [],
+          "text": "An AI coding tool opened in your website’s project folder. If you are starting from an empty folder, the build prompt asks it to create a minimal Vite project."
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "2a97a4a5ab68",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "ec41ed3f7b40",
+          "_type": "span",
+          "marks": [],
+          "text": "Choose an object with a transformation you can describe. A box can unfold, a device can open, and a building can assemble in stages. Start with one object and one movement so you have a clear result to judge."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "931e192866ca",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "059ad8ba0c79",
+          "_type": "span",
+          "marks": [],
+          "text": "1. Plan five views of the same transformation"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "18753ca1164f",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "b4807406d97a",
+          "_type": "span",
+          "marks": [],
+          "text": "Your five pictures should show the start, roughly 25%, 50%, and 75% of the transformation, and the finished object. They give the coding tool concrete poses to work towards."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "688c593faac2",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "a853bf7f6daf",
+          "_type": "span",
+          "marks": [],
+          "text": "Keep the camera angle, framing, object size, materials, and lighting consistent. The parts should move between pictures while the object remains recognisably the same. If a window appears from nowhere or a panel changes shape, fix that picture before moving on."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "0ba9bea22e34",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "b732177263c5",
+          "_type": "span",
+          "marks": [],
+          "text": "These pictures are pose references. A flattened image does not contain separately movable parts, and five stills alone do not provide all the frames of a smooth animation. The coding step needs to recreate the object using shapes, geometry, or suitable separate image layers."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "bbcdc9814777",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "7807f12fb261",
+          "_type": "span",
+          "marks": [],
+          "text": "Copy the first prompt into your image tool, replace [YOUR OBJECT] with your subject, and attach your reference picture. If the tool can only produce one image at a time, begin with the starting pose and use it as the reference for the next stage."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "534ab6c1541c",
+      "_type": "promptBlock",
+      "text": "Create a premium visual concept and five-image transformation sequence for [YOUR OBJECT]\n\nPURPOSE\n\nThese images will serve as key-pose references for an animation built with Anime.js on my website. Generate images only-no code or website.\n\nCREATIVE DIRECTION\n\nChoose an eye-catching transformation appropriate to the object, with a clear starting state and a satisfying ending state. Consider unfolding, opening, expanding, rotating, or assembling. Choose the movement that best reveals the object’s character and construction. Avoid relying on a simple colour change or fade. Decide the materials, colour palette, lighting, and background. Use a polished 3D product-render aesthetic with believable depth, refined surfaces, and subtle reflections. Keep the design striking, readable on a phone, and practical to recreate as separately animated components.\n\nCOMPOSITION\n\nShow one centred object against a clean, uniform background. Choose a fixed camera angle that clearly reveals the transformation. Use a square canvas with enough space for every stage. Keep the camera distance, perspective, framing, and object anchor position identical throughout. Do not resize individual poses to fill the frame.\n\nSEQUENCE\n\nPlan the complete object and its movement before generating:\n\n1. Starting state.\n\n2. Transformation approximately 25% complete.\n\n3. Transformation approximately 50% complete.\n\n4. Transformation approximately 75% complete.\n\n5. Ending state. Make each stage a coherent step in the same transformation. Preserve component identity, count, shape, and materials. Hidden components should appear naturally as they become visible. Establish the design in the first image, then use it as the visual reference for subsequent images wherever reference-image input is supported.\n\nCONSISTENCY AND CLARITY\n\nKeep colours, textures, background, light positions, and exposure consistent. Only change component positions and orientations required by the transformation. Allow shadows and reflections to change naturally with movement. Keep component boundaries clear and the entire object sharply focused. Avoid intersecting solid parts, unexplained additions, disappearing components, motion blur, heavy glow, smoke, and particles.\n\nOUTPUT\n\nDeliver five separate high-resolution images with identical dimensions. Do not combine them into a collage or grid. No text, labels, logos, watermarks, borders, or unrelated objects. If only one image can be generated at a time, create the starting frame first and retain the same design specification for the remaining frames. These are visual references. Do not claim that flattened images contain editable layers or that five key poses alone create a smooth animation.",
+      "title": "Prompt 1: Make five reference images"
+    },
+    {
+      "_key": "723b91d6d686",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "cdcf117b6c3e",
+          "_type": "span",
+          "marks": [],
+          "text": "2. Check the pictures before asking for code"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "eac6e8c22d1c",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "d839b12da246",
+          "_type": "span",
+          "marks": [],
+          "text": "Put the five images next to each other and look for changes that are unrelated to the movement. Does the camera drift? Does the object become larger? Do the materials or number of components change? Those inconsistencies make the intended transformation harder to interpret."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "97451a878290",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "f738a7ff3227",
+          "_type": "span",
+          "marks": [],
+          "text": "Regenerate only the stages that need fixing, using the approved images as references where your tool supports them. Name the files in order, such as 01-start through 05-finished, so the coding tool can follow the sequence."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "fafc0fdf2a09",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "255f5ff052b3",
+          "_type": "span",
+          "marks": [],
+          "text": "3. Build the scroll-driven animation"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "9920f48103f2",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "e4a78bdf5b79",
+          "_type": "span",
+          "marks": [],
+          "text": "Open your coding tool in the website’s folder, attach the five images, and paste the second prompt. It asks the tool to inspect your existing site, choose a rendering approach, and build a reusable component that fits the project."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "f5f02b355720",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "b8f6efef67b3",
+          "_type": "span",
+          "marks": [],
+          "text": "For an illustrated object with flat movement, layered SVG may be enough. When the transformation needs real depth, changing perspectives, or curved surfaces, the prompt allows Three.js. Separate image layers can also work when suitable assets exist and their movement will not reveal missing surfaces."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "22208b78e079",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "7ceecc88ff9a",
+          "_type": "span",
+          "marks": [],
+          "text": "The aim is to move the object’s components continuously between the reference poses. A sequence of fades between the five pictures will not reproduce that movement. Ask the coding tool to explain any details it cannot recreate faithfully."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "fb656a9eeb60",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "8b3841c57332",
+          "_type": "span",
+          "marks": [],
+          "text": "Anime.js provides scroll observers that can synchronise a timeline with scrolling. The build prompt uses that mechanism, with smoothing, to connect the animation to a pinned section. See the "
+        },
+        {
+          "_key": "1ea3b537a4de",
+          "_type": "span",
+          "marks": [
+            "ac2a47d2e7d8"
+          ],
+          "text": "official onScroll documentation."
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "ac2a47d2e7d8",
+          "_type": "link",
+          "href": "https://animejs.com/documentation/events/onscroll/"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "a40d6d92dc78",
+      "_type": "promptBlock",
+      "text": "Implement a polished, scroll-driven animation on my website using Anime.js, based on the attached object images.\n\nGOAL\n\nRecreate the object and its transformation as a smooth, continuous animation whose progress is driven by the user's scroll position (like the hero on animejs.com). Treat the images as visual references for the starting state, intermediate poses, and ending state. Inspect my existing website first. Match its framework, layout, and styling, and integrate the animation without replacing unrelated content. If the project is empty, scaffold a minimal Vite project and build a simple hero page around the animation, with at least one section after it.\n\nCHOOSE THE APPROPRIATE APPROACH\n\nInspect the images and choose the simplest rendering approach that can convincingly reproduce the object:\n\n- Use layered SVG for illustrated objects and transformations that work in two dimensions.\n\n- Use Three.js with Anime.js for objects that require real depth, curved surfaces, changing perspective, or realistic lighting.\n\n- Use separate image layers only if suitable assets exist and their movement does not expose missing surfaces. Anime.js should control the animation timing and progression. Do not assume that flattened images contain editable components. Create the necessary SVG shapes or procedural 3D geometry where practical. If essential assets cannot be recreated faithfully, explain the specific limitation before substituting a noticeably different design.\n\nVISUAL FIDELITY\n\nPreserve the reference object's silhouette, proportions, materials, colours, and identifiable components. Give each moving component its own transform and an appropriate pivot point. Maintain consistent construction throughout the transformation. Do not substitute a slideshow, crossfade, whole-image zoom, or rotation for the object's actual transformation.\n\nANIMATION\n\nBuild one coordinated, seekable Anime.js timeline. Use the supplied images as pose guides, interpolating continuously between them. Do not treat the reference images as a complete frame sequence. Use:\n\n- Natural acceleration and deceleration.\n\n- Subtle staggering between related components.\n\n- Believable hinge, rotation, sliding, or assembly movement.\n\n- A brief hold on the starting pose and on the final reveal.\n\n- Restrained secondary motion where it improves the result. Keep the camera stable unless the references require movement. Avoid unnecessary bouncing, jitter, abrupt transitions, and intersecting solid parts. Parts that haven't appeared yet must be hidden, not floating in place. Seeking must be deterministic: jumping to any time, forwards or backwards, must produce exactly the same frame as playing to that time.\n\nSCROLL-DRIVEN PLAYBACK\n\n- Link the timeline to scroll with Anime.js onScroll (ScrollObserver) using smoothed sync (e.g. sync: 0.4), so it eases towards the scroll position instead of stepping with the mouse wheel.\n\n- Place the animation in a tall scroll section (about 300-350vh) with a sticky, full-viewport inner container, so the object stays pinned while scrolling builds it.\n\n- Map the section's scroll range (enter 'top top' → leave 'bottom bottom') to the full build: start pose at the top, finished object at the bottom. Scrolling up must reverse it smoothly.\n\n- In scroll mode the timeline plays the build once and does not loop.\n\n- On desktop, pin the hero copy beside the animation. On mobile, let the copy scroll normally, then pin the animation.\n\n- Show a small progress indicator with clickable stage labels that smooth-scroll to each stage, and a \"scroll\" hint that fades out once scrolling starts.\n\n- Release the pin cleanly into the following content when the build completes.\n\n- Keep an optional autoplay mode (with a seamless loop that returns to the starting pose, matching position and motion at the boundary) for use without scroll.\n\nWEBSITE INTEGRATION\n\nCreate a reusable, responsive component with a small API (play, pause, seek, destroy, and a scroll option). Keep animation styles scoped to the component. Avoid global CSS changes and duplicate dependencies. Handle resizing (including refreshing the scroll observer), pause unnecessary work when offscreen or when the tab is hidden, and clean up timelines, scroll observers, listeners, and rendering resources when the component is removed. Respect prefers-reduced-motion: remove the tall scroll section, show a strong static pose of the finished object with an optional play control, and switch modes if the preference changes.\n\nPERFORMANCE\n\nAim for stable 60 fps on capable devices, including while scrolling, without promising it universally. Render only when the timeline changes. Keep geometry, effects, and animated elements economical. For 3D, cap rendering resolution appropriately for mobile devices. Load required assets before starting so the object does not appear in incomplete pieces.\n\nVERIFICATION AND DELIVERY\n\nImplement the working animation, not just an explanation. Run it in the browser and check:\n\n- Visual similarity to the supplied references.\n\n- Smooth movement through intermediate poses.\n\n- Scroll position maps correctly to progress (e.g. 60% through the section = 60% built), smoothing works, and scrolling up reverses cleanly.\n\n- Backward seeks produce the same frames as forward playback.\n\n- Progress UI stays correct during holds where nothing moves.\n\n- The pin releases correctly into the next section.\n\n- Autoplay loop behaviour, if included.\n\n- Desktop and mobile layout, with no horizontal scroll.\n\n- Reduced-motion behaviour.\n\n- Browser errors and integration issues. Provide a working preview and identify the files changed. Briefly explain how to adjust scroll length, smoothing, duration, colours, and component size. Clearly state any visual compromises. Do not claim that performance or behaviour was tested unless it actually was.",
+      "title": "Prompt 2: Build the website animation"
+    },
+    {
+      "_key": "575ec8635626",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "639b81df2f56",
+          "_type": "span",
+          "marks": [],
+          "text": "4. Test the experience in both directions"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "696357f3fee0",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "422515c2c6e1",
+          "_type": "span",
+          "marks": [],
+          "text": "Scroll slowly through the preview, then scroll back up. Jump between stages as well. Parts should return to the same positions at the same timeline progress, even when you reach that point from the opposite direction."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "f114661924d8",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "4ec3a8b02f4e",
+          "_type": "span",
+          "marks": [],
+          "text": "Check the starting pose, intermediate poses, and final reveal against your reference images."
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "50d62f52d76a",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "29adcf466734",
+          "_type": "span",
+          "marks": [],
+          "text": "Check that scrolling moves the timeline smoothly and that the pinned section releases into the next part of the page."
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "897e8ec92776",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "12aabcf3b89c",
+          "_type": "span",
+          "marks": [],
+          "text": "Check the layout on a phone: the object, text, and stage controls should fit without horizontal scrolling."
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "414895105da9",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "02e2f6e0673e",
+          "_type": "span",
+          "marks": [],
+          "text": "Check reduced-motion mode. The prompt asks for a static finished pose without the long pinned scroll section, plus an optional play control."
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "0380b80f6982",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "d2b90fe020a1",
+          "_type": "span",
+          "marks": [],
+          "text": "Ask the coding tool to report the checks it actually ran, any browser errors, and any visual compromises. A performance target is not a measured result."
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "8ae25e791f94",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "54d50a35c750",
+          "_type": "span",
+          "marks": [],
+          "text": "With smoothing enabled, the animation can take a moment to catch up after you stop scrolling. Brief holds and easing also affect how much visible movement happens within each part of the timeline. Judge the progress indicator against timeline progress, and the object against its intended poses."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "6a9cccfc9ad1",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "1a88cd60e246",
+          "_type": "span",
+          "marks": [],
+          "text": "5. Refine one thing at a time"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "4873ffdb6ecd",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "1169161e2bb1",
+          "_type": "span",
+          "marks": [],
+          "text": "Once the basic transformation works, use these follow-up prompts to try a spin, a closer view, labels, or a different layout. Make one change, scroll through the preview again, and decide whether it helps before adding another."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "830811a3ffcf",
+      "_type": "promptBlock",
+      "text": "Add a smooth spinning animation to the object while it builds, so we can see it from more sides. Keep the spin tied to the scroll, and end on the same angle as the final picture.",
+      "title": "Prompt 3A: Add a spin"
+    },
+    {
+      "_key": "9a1d7ed8468d",
+      "_type": "promptBlock",
+      "text": "Zoom in on the object during the build so the small details are easy to see, then zoom back out at the end to show the whole thing.",
+      "title": "Prompt 3B: Add a zoom"
+    },
+    {
+      "_key": "82461cd862ea",
+      "_type": "promptBlock",
+      "text": "Add pointer arrows with short labels that describe each part of the object. Show each label when its part appears, and keep them easy to read on a phone.",
+      "title": "Prompt 3C: Add pointer arrows"
+    },
+    {
+      "_key": "550971f1c6cb",
+      "_type": "promptBlock",
+      "text": "Move the object to the side, with the text next to it on desktop. On mobile, place the text above the animation and keep the object centred.",
+      "title": "Prompt 3D: Change the layout"
+    },
+    {
+      "_key": "4fb3545d19b9",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "05140c79c457",
+          "_type": "span",
+          "marks": [],
+          "text": "A spin can expose surfaces that were hidden in the original pictures. If those details matter, provide another reference or ask the tool to explain how it will reconstruct them. Keep labels short enough to read at the size visitors will actually see."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "4ed5e42da8a5",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "d19ecdb8b43e",
+          "_type": "span",
+          "marks": [],
+          "text": "Keep the prompts for your next project"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "b765298b6a6a",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "0d8be1d693a1",
+          "_type": "span",
+          "marks": [],
+          "text": "Use the downloadable PDF as a reference while you work. It contains the original three-part prompt guide and screenshots of a building at the start, middle, and end of its scroll animation."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "f25ba0a98fd3",
+      "_type": "download",
+      "asset": {
+        "_ref": "file-04f29c4d1f648b81855c90557732eccc13e9cdfa-pdf",
+        "_type": "reference"
+      },
+      "label": "Download the original prompt guide (PDF)"
+    },
+    {
+      "_key": "e887c264ff3b",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "7542be93731c",
+          "_type": "span",
+          "marks": [],
+          "text": "For the companion code, visit "
+        },
+        {
+          "_key": "991e7b1f6898",
+          "_type": "span",
+          "marks": [
+            "cdd5c65484fb"
+          ],
+          "text": "the Anime.js testing project on GitHub."
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "cdd5c65484fb",
+          "_type": "link",
+          "href": "https://github.com/dayrentjiang/animejs-testing"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "76f3df4586bf",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "dee5d4470cd1",
+          "_type": "span",
+          "marks": [],
+          "text": "Start with a clear transformation, get the reference images consistent, and check the result in the browser. Those decisions will shape the animation more than adding extra effects at the end."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    }
+  ],
+  "cover": {
+    "_type": "image",
+    "alt": "Architectural building midway through a floor-by-floor assembly animation, shown with wireframe upper floors.",
+    "asset": {
+      "_ref": "image-6e4186b7806c6de9b204855cfe8cea17e1720863-898x900-png",
+      "_type": "reference"
+    }
+  },
+  "excerpt": "Start with one picture, create five consistent reference images, and use AI to build a scroll-driven website animation. Includes the complete prompts and a checklist for refining the result.",
+  "publishedAt": "2026-09-28T00:43:06.044Z",
+  "slug": {
+    "_type": "slug",
+    "current": "turn-a-picture-into-a-scroll-animation"
+  },
+  "tags": [
+    "AI workflows",
+    "Anime.js",
+    "Web animation"
+  ],
+  "title": "Turn a Picture into a Scroll Animation with AI and Anime.js"
+}

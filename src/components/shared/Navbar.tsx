@@ -8,6 +8,7 @@ const navLinks = [
   { name: "HOME", href: "/" },
   { name: "ABOUT", href: "/about" },
   { name: "PROJECTS", href: "/projects" },
+  { name: "LIBRARY", href: "/library" },
   { name: "CONTACT", href: "/contact" },
 ];
 
@@ -37,7 +38,7 @@ export default function Navbar() {
 
   return (
     <>
-      <header className={`site-header ${pathname === "/" || pathname === "/projects" ? "site-header-light" : "site-header-dark"}`}>
+      <header className={`site-header ${pathname === "/" || pathname === "/projects" || pathname.startsWith("/library") ? "site-header-light" : "site-header-dark"}`}>
         <Link href="/" className="site-brand" aria-label="Dayrent Tjiang home">
           <BrandMark /><span>Dayrent Tjiang</span>
         </Link>
@@ -65,7 +66,7 @@ export default function Navbar() {
         <div className="site-menu-content">
           <nav aria-label="Main">
             {navLinks.map((link) => (
-              <Link key={link.href} href={link.href} onClick={() => setIsOpen(false)} aria-current={pathname === link.href ? "page" : undefined}>
+              <Link key={link.href} href={link.href} onClick={() => setIsOpen(false)} aria-current={pathname === link.href || (link.href !== "/" && pathname.startsWith(`${link.href}/`)) ? "page" : undefined}>
                 {link.name}
               </Link>
             ))}
