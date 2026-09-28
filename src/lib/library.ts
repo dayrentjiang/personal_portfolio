@@ -1,8 +1,10 @@
 import "server-only";
 import { cache } from "react";
+import { draftMode } from "next/headers";
 import { defineQuery } from "next-sanity";
 import type { PortableTextBlock } from "@portabletext/react";
 import { live } from "@/sanity/live";
+import { client } from "@/sanity/client";
 
 export const resourceKinds = ["article", "prompt", "skill"] as const;
 export type ResourceKind = (typeof resourceKinds)[number];
@@ -33,7 +35,14 @@ const resourceQuery = defineQuery(`*[_type in ["article", "prompt", "skill"] && 
 }`);
 
 export const getResources = cache(async (): Promise<ResourceSummary[]> => {
-  if (!live) return [];
+  if (!live || !client) return [];
+  // A publication must appear even when no browser was connected to Sanity Live.
+  // React cache still deduplicates this request within the current render.
+  if (!(await draftMode()).isEnabled) {
+    return client.fetch<ResourceSummary[]>(listingQuery, {}, {
+      perspective: "published", stega: false, useCdn: false, cache: "no-store",
+    });
+  }
   const { data } = await live.sanityFetch({ query: listingQuery, stega: false });
   return data as ResourceSummary[];
 });

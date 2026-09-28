@@ -52,6 +52,8 @@ paid or restricted downloads later.
 
 The publication date is a display date, not a scheduler. Publishing makes a document public.
 Sanity Live refreshes readers' pages after content changes without a website deployment.
+The public homepage and Library list also fetch published resources on each request,
+so new publications appear even when no reader was connected to receive a live event.
 The public perspective excludes drafts; the authenticated Presentation handshake enables
 draft mode. Exit preview using the on-page control when browsing outside Studio.
 
