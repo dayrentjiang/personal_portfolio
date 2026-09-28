@@ -47,7 +47,10 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               {project.details.video && <a href="#launch-video">Watch launch film <span aria-hidden="true">↓</span></a>}
             </div>
           </header>
-          <Image className={styles.image} src={project.image} alt={`${project.title} product showcase concept`} width={1122} height={1402} sizes="(max-width: 760px) 88vw, 440px" />
+          <figure className={styles.preview}>
+            <Image className={styles.image} src={project.image} alt={`${project.title} product showcase concept`} width={1122} height={1402} sizes="(max-width: 760px) 88vw, 440px" />
+            {project.imageCaption && <figcaption>{project.imageCaption}</figcaption>}
+          </figure>
         </div>
         <div className={styles.details}>
           <section>

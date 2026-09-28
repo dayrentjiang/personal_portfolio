@@ -13,6 +13,8 @@
 .links a:hover { border-color: var(--page-accent); }
 .page a:focus-visible { outline: 2px solid var(--page-accent); outline-offset: 5px; }
 .image { display: block; width: 100%; height: auto; border-radius: 20px; border: 1px solid var(--page-line); }
+.preview { margin: 0; }
+.preview figcaption { margin: 12px auto 0; max-width: 440px; color: var(--page-muted); font-size: 12px; line-height: 1.6; }
 .details { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 88px); margin-top: 76px; padding-top: 48px; border-top: 1px solid var(--page-line); }
 .details h2 { margin: 0 0 22px; font-size: 28px; font-weight: 500; letter-spacing: -.045em; }
 .details h3 { margin: 28px 0 16px; font-size: 16px; font-weight: 500; }
