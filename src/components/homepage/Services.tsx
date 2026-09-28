@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useLenis } from "lenis/react";
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import styles from "./Services.module.css";
 
@@ -84,6 +85,7 @@ function AutomationPreview() {
 }
 
 export default function Services() {
+  const lenis = useLenis();
   const [active, setActive] = useState<Capability>("applications");
   const [paused, setPaused] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
@@ -137,10 +139,9 @@ export default function Services() {
     const index = capabilities.findIndex(capability => capability.id === id);
     const hold = Math.max(420, window.innerHeight * .85);
     const overhang = Math.max(0, stage.offsetHeight - window.innerHeight);
-    window.scrollTo({
-      top: section.getBoundingClientRect().top + window.scrollY + overhang + (index + .5) * hold,
-      behavior: "smooth",
-    });
+    const top = section.getBoundingClientRect().top + window.scrollY + overhang + (index + .5) * hold;
+    if (lenis) lenis.scrollTo(top);
+    else window.scrollTo({ top, behavior: "smooth" });
   };
 
   useEffect(() => {

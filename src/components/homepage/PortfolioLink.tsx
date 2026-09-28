@@ -1,5 +1,3 @@
-"use client";
-
 import styles from "./Introduction.module.css";
 
 export default function PortfolioLink() {
@@ -7,15 +5,6 @@ export default function PortfolioLink() {
     <a
       className={styles.portfolioLink}
       href="#portfolio"
-      onClick={(event) => {
-        if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-        const portfolio = document.getElementById("portfolio");
-        if (!portfolio) return;
-        event.preventDefault();
-        portfolio.scrollIntoView({
-          behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth",
-        });
-      }}
     >
       Explore my portfolio
       <span className={styles.linkArrow} aria-hidden="true">

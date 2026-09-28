@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import { useLenis } from "lenis/react";
 
 const navLinks = [
   { name: "HOME", href: "/" },
@@ -19,6 +20,7 @@ function BrandMark() {
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
+  const lenis = useLenis();
   const menuButton = useRef<HTMLButtonElement>(null);
   const menuDialog = useRef<HTMLDialogElement>(null);
 
@@ -29,12 +31,14 @@ export default function Navbar() {
     const previousOverflow = document.body.style.overflow;
     dialog?.showModal();
     document.body.style.overflow = "hidden";
+    lenis?.stop();
     return () => {
       dialog?.close();
       document.body.style.overflow = previousOverflow;
+      lenis?.start();
       trigger?.focus();
     };
-  }, [isOpen]);
+  }, [isOpen, lenis]);
 
   return (
     <>
@@ -56,7 +60,7 @@ export default function Navbar() {
           </button>
         </div>
       </header>
-      <dialog ref={menuDialog} id="site-menu" className="site-menu-dialog" aria-label="Main navigation" onCancel={() => setIsOpen(false)}>
+      <dialog ref={menuDialog} id="site-menu" className="site-menu-dialog" aria-label="Main navigation" data-lenis-prevent onCancel={() => setIsOpen(false)}>
         <div className="site-menu-top">
           <Link href="/" onClick={() => setIsOpen(false)} className="site-brand">
             <BrandMark /><span>Dayrent Tjiang</span>

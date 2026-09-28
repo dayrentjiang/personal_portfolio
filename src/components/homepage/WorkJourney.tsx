@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useLayoutEffect, useRef, useState, useSyncExternalStore, type CSSProperties } from "react";
 import Image from "next/image";
+import { useLenis } from "lenis/react";
 import { journeyStops } from "@/data/work-journey";
 import JourneyScene from "./JourneyScene";
 import { journeyProgress, journeyStopOffset, journeyTiming } from "./journey-motion";
@@ -15,6 +16,7 @@ function subscribeMotion(callback: () => void) {
 }
 
 export default function WorkJourney() {
+  const lenis = useLenis();
   const sectionRef = useRef<HTMLElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
   const progressRef = useRef(0);
@@ -28,10 +30,16 @@ export default function WorkJourney() {
   useLayoutEffect(() => {
     if (completed && completionScrollRef.current !== null) {
       // Removing the long scroll track must keep the visible stage in place.
-      window.scrollTo({ top: completionScrollRef.current, behavior: "instant" });
+      if (lenis) {
+        // Reset Lenis's animation too, so it cannot drive back into the removed track.
+        lenis.scrollTo(completionScrollRef.current, { immediate: true, force: true });
+        lenis.resize();
+      } else {
+        window.scrollTo({ top: completionScrollRef.current, behavior: "instant" });
+      }
       completionScrollRef.current = null;
     }
-  }, [completed]);
+  }, [completed, lenis]);
 
   useEffect(() => {
     const stage = stageRef.current;
@@ -95,11 +103,10 @@ export default function WorkJourney() {
       setActive(index);
       return;
     }
-    window.scrollTo({
-      top: section.getBoundingClientRect().top + window.scrollY + journeyStopOffset(index, journeyStops.length, window.innerHeight),
-      behavior: "smooth",
-    });
-  }, []);
+    const top = section.getBoundingClientRect().top + window.scrollY + journeyStopOffset(index, journeyStops.length, window.innerHeight);
+    if (lenis) lenis.scrollTo(top);
+    else window.scrollTo({ top, behavior: "smooth" });
+  }, [lenis]);
 
   return (
     <section ref={sectionRef} id="journey" className={styles.section} data-complete={completed} aria-labelledby="journey-title" style={{ "--journey-stop-count": journeyStops.length } as CSSProperties}>
@@ -116,7 +123,21 @@ export default function WorkJourney() {
             <h2 id="journey-title">The road so far<span>.</span></h2>
             <p>From learning the foundations to building things people rely on.</p>
           </div>
-          <a href="#journey-end" className={styles.skip}>Skip journey <span aria-hidden="true">↓</span></a>
+          <a href="#journey-end" className={styles.skip} onClick={(event) => {
+            if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || completedRef.current || reducedMotion) return;
+            const section = sectionRef.current;
+            const stage = stageRef.current;
+            if (!section || !stage) return;
+            event.preventDefault();
+            // Skip to the end of the collapsed section, not the old long track.
+            completionScrollRef.current = section.getBoundingClientRect().top + window.scrollY + stage.offsetHeight;
+            completedRef.current = true;
+            progressRef.current = 1;
+            section.style.setProperty("--journey-progress", "1");
+            setActive(journeyStops.length - 1);
+            setCompleted(true);
+            if (window.location.hash !== "#journey-end") window.history.pushState(null, "", "#journey-end");
+          }}>Skip journey <span aria-hidden="true">↓</span></a>
         </header>
 
         <div className={styles.layout}>
