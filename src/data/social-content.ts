@@ -4,7 +4,6 @@ export interface SocialPost {
   topic: string;
   thumbnail?: string;
   alt?: string;
-  imageFit?: "cover" | "contain";
   videoUrl?: string;
   permalink?: string;
 }
@@ -12,7 +11,8 @@ export interface SocialPost {
 // Curate personal moments here: photos, conversations, and life beyond work.
 // The previews below are suggested themes, not claims about published posts.
 export const socialPosts: SocialPost[] = [
-  { id: "enroute-tech", title: "EnrouteTech.", topic: "Behind the brand", thumbnail: "/moments/enroute-tech.webp", alt: "EnrouteTech logo concepts in orange, white, and navy", imageFit: "contain" },
+  { id: "curiosity", title: "Learning by trying.", topic: "A curious mind", thumbnail: "/IMG_7575.jpg" },
+  { id: "me", title: "The person behind the work.", topic: "A little about me", thumbnail: "/IMG_2749.jpg" },
   { id: "lifeblood", title: "At Lifeblood.", topic: "People & places", thumbnail: "/moments/lifeblood.webp", alt: "Dayrent outside Australian Red Cross Lifeblood" },
   { id: "a-moment-outside", title: "A moment outside.", topic: "Everyday moments", thumbnail: "/moments/a-moment-outside.webp", alt: "Dayrent standing in front of a leafy green hedge" },
   { id: "work-on-the-go", title: "Work on the go.", topic: "Life behind the work", thumbnail: "/moments/work-on-the-go.webp", alt: "Dayrent working on a laptop outdoors at night" },

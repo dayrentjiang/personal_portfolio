@@ -98,7 +98,6 @@ export default function SocialContent() {
               style={{ "--offset": offset } as CSSProperties}
               data-active={isActive}
               data-tone={index % 4}
-              data-image-fit={post.imageFit}
               role="group"
               aria-roledescription="slide"
               aria-label={`${index + 1} of ${posts.length}: ${post.title}`}
