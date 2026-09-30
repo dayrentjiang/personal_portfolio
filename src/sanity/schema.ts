@@ -19,6 +19,18 @@ const download = defineType({
   fields: [defineField({ name: "label", type: "string", title: "Button label", initialValue: "Download file" })],
 });
 
+const video = defineType({
+  name: "video",
+  title: "Video",
+  type: "file",
+  options: { accept: "video/mp4,video/webm" },
+  fields: [
+    defineField({ name: "title", title: "Video description", type: "string", validation: (rule) => rule.required() }),
+    defineField({ name: "poster", title: "Poster image", type: "image" }),
+    defineField({ name: "caption", title: "Caption", type: "string" }),
+  ],
+});
+
 const body = defineType({
   name: "resourceBody",
   title: "Content",
@@ -45,6 +57,7 @@ const body = defineType({
     ] }),
     defineArrayMember({ type: "promptBlock" }),
     defineArrayMember({ type: "download" }),
+    defineArrayMember({ type: "video" }),
     defineArrayMember({ name: "codeBlock", title: "Code block", type: "object", fields: [
       defineField({ name: "language", type: "string", title: "Language", initialValue: "text" }),
       defineField({ name: "code", type: "text", rows: 12, validation: (rule) => rule.required() }),
@@ -94,4 +107,4 @@ function resource(name: "article" | "prompt" | "skill", title: string) {
   });
 }
 
-export const schemaTypes = [body, promptBlock, download, resource("article", "Article"), resource("prompt", "Prompt"), resource("skill", "Skill")];
+export const schemaTypes = [body, promptBlock, download, video, resource("article", "Article"), resource("prompt", "Prompt"), resource("skill", "Skill")];

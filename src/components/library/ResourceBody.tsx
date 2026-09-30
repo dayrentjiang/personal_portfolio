@@ -19,6 +19,15 @@ const components: PortableTextComponents = {
     download: ({ value }: { value: { label?: string; file?: FileAsset } }) => value.file?.url ? (
       <a className="library-download" href={downloadUrl(value.file)} download={value.file.originalFilename}>{value.label || "Download file"} <span aria-hidden="true">↓</span></a>
     ) : null,
+    video: ({ value }: { value: { title?: string; caption?: string; posterUrl?: string; file?: FileAsset } }) => value.file?.url ? (
+      <figure>
+        <video className="library-body-video" controls playsInline preload="none" poster={value.posterUrl} aria-label={value.title || "Article video"}>
+          <source src={value.file.url} type={value.file.mimeType || "video/mp4"} />
+          <a href={value.file.url}>Watch the video</a>
+        </video>
+        {value.caption && <figcaption>{value.caption}</figcaption>}
+      </figure>
+    ) : null,
   },
   marks: {
     link: ({ children, value }) => {

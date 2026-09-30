@@ -28,7 +28,8 @@ const resourceQuery = defineQuery(`*[_type in ["article", "prompt", "skill"] && 
   _id, _type, title, "slug": slug.current, excerpt, publishedAt, _updatedAt, tags,
   "cover": cover { "url": asset->url, alt },
   body[] { ..., _type == "image" => { "url": asset->url },
-    _type == "download" => { "file": asset->{url, originalFilename, size, mimeType} }
+    _type in ["download", "video"] => { "file": asset->{url, originalFilename, size, mimeType} },
+    _type == "video" => { "posterUrl": poster.asset->url }
   },
   promptText, version, requirements,
   "skillFile": skillFile.asset->{url, originalFilename, size, mimeType}

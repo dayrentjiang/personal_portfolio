@@ -51,6 +51,7 @@
 .library-prose :not(pre) > code { background: #eeece5; padding: 3px 5px; font-size: .85em; border-radius: 3px; }
 .library-prose figure { margin: 34px 0; }
 .library-body-image { width: 100%; height: auto; }
+.library-body-video { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: contain; background: #101719; border-radius: 6px; }
 .library-prose figcaption { text-align: center; color: #657176; font-size: 12px; margin-top: 10px; }
 .library-copy { margin: 32px 0; border: 1px solid #d5d9d1; border-radius: 6px; overflow: hidden; background: #eeefe8; }
 .library-copy-heading { display: flex; justify-content: space-between; align-items: center; gap: 14px; padding: 14px 20px; border-bottom: 1px solid #d5d9d1; font-size: 12px; }

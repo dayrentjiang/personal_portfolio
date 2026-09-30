@@ -42,6 +42,8 @@ paid or restricted downloads later.
   The first topic is used as the card category, falling back to Article, Prompt, or Skill.
 - Write in the visual content editor. It supports headings, lists, quotes, links, images,
   code blocks, copyable prompt blocks, and file downloads.
+- Add a **Video** block to embed an MP4 or WebM with playback controls. Give it a
+  description, a poster image, and an optional caption. Video playback starts on demand.
 - For a Prompt, paste the exact text in **Prompt to copy**.
 - For a Skill, upload `.md` or `.zip`, write its setup instructions, and optionally set
   a version and requirements. Markdown files up to 256 KB get a collapsible source preview
